@@ -11,8 +11,8 @@ a{text-decoration:none;}
  background-color:#173d00;
  z-index:999999999999999999999999999;
 }
-.topn{ width:1140px; margin:0 auto;}
-.logo{ float:left;}
+.topn{ width:1080px; margin:0 auto;}
+.logo{ padding-left:10px;float:left;}
 .chj{ float:right; padding-top:25px;}
 .chj li{ float:left; margin-left:25px; display:inline; height:16px;}
 .chj a{ color:#a7b0a3;}
@@ -112,7 +112,7 @@ li.lq{text-align:right; padding-left:320px; margin-top:-10px;}
 .user{ padding-bottom:60px; padding-left:25px; }
 .user input{ width:406px; height:40px; border:1px solid #808382; font-size:14px; color:#adadad; padding-left:10px;}
 
-.login{ padding-bottom:60px; padding-left:25px; }
+.login{ padding-bottom:35px; padding-left:25px; }
 .login input{ width:310px; height:40px; border:1px solid #808382; font-size:14px; color:#adadad; padding-left:10px;}
 
 
@@ -230,6 +230,92 @@ li.lq{text-align:right; padding-left:320px; margin-top:-10px;}
 .yzm span{ float:left; }
 .houj{ color:#ffc000; font-size:14px; text-align:center; padding-top:50px; padding-left:20px;}
 .close{ position:absolute; right:42px; top:58px;}
+
+
+
+
+
+
+
+
+
+
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.top {
+	top: 0;	
+}
+.main-section {
+	margin-top: 80px;
+	padding: 20px;
+	background-color: #FFF;
+	width: 1040px;
+}
+
+.tabs-section {
+	
+}
+.tabs-section ul.tabs {
+	border-bottom: solid 1px #748B66;
+}
+.tabs-section ul.tabs li.tab {
+	float: left;
+	margin-right: 5px;
+}
+.tabs-section ul.tabs li.tab a{
+	display: block;	
+	height: 42px;
+	line-height: 42px;
+	width: 100px;
+	background-color: #173D00;
+	color: #DDD;
+	text-align: center;
+	font-size: 16px;
+}
+.tabs-section ul.tabs li.tab a.active{
+	color: #FFF;
+	background-color: #748B66;
+}
+.tabs-section ul.tabs li.tab a:hover{
+	color: #FFF;
+	background-color: #526944;
+}
+
+.tabs-section .contents {
+	background-color: #FFF;
+	padding: 12px 0;
+}
+
+.myprizes {
+	padding: 10px;
+}
+.myprizes li.item {
+	background-color: #EEE;
+	margin-bottom: 8px;
+	/*
+	float: left;
+	width: 100%;
+	*/
+}
+.myprizes li.item .contents{
+	padding: 6px;
+}
+.myprizes li.item .contents .prize-thumb {
+	float: left;
+}
+.myprizes li.item .contents .prize-thumb img{
+	width: 180px;
+	height: 100px;
+}
+
+
 
 
 

@@ -19,7 +19,7 @@
 }
 </style>
 <body>
-<form action="<?php echo site_url('login/dologin')?>" method="post" id="formLogin" name="formLogin">
+<form url="<?php echo site_url('login/dologin')?>" method="post" id="formLogin" name="formLogin">
 <div >
 <div class="toum"></div>
 <div class="mydiv">

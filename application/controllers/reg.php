@@ -17,9 +17,11 @@ class reg extends CI_Controller {
 	public function doreg() {
     	$nick_name=$this->input->post('nick_name');			
     	$email=$this->input->post('email');	
+    	$mobile=$this->input->post('mobile');    	
     	$password=$this->input->post('password');
     	$user['nick_name']=$nick_name;    		  
     	$user['email']=$email;
+    	$user['mobile']=$mobile;
     	$user['password']=md5($password);
 		$id=$this->user->regUserByEmail($user);
 		$uid=$this->func->urlsafe_b64encode($id);

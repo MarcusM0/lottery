@@ -96,9 +96,11 @@ $('#btn_submit').click(function(){
     				//inputErrorStyleWaver($("#result",this).get(0));
               }
               var item={};
+              var images=Array();
               item.taskID=taskID;  
-              item.image=image;      
+              item.image=images;      
               item.result=result;
+              item.enterWay=enterWay;
               json.push(item);              
           }else{
               var taskID=$(this).attr("taskID");  
@@ -117,9 +119,11 @@ $('#btn_submit').click(function(){
     				//inputErrorStyleWaver($("#result",this).get(0));
               }
               var item={};
+              var images=Array();              
               item.taskID=taskID;  
-              item.image=image;      
+              item.image=images;    
               item.result=result;
+              item.enterWay=enterWay;
               json.push(item);                
           }
        

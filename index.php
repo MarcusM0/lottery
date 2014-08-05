@@ -1,5 +1,6 @@
 <?php
 
+require_once './myDebug/myDebug.class.php';
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

@@ -50,7 +50,7 @@ class lottery extends CI_Controller {
 		           	 }        
 		           }        
 		           $jsonString = json_encode($obj);
-                   //$this->prize->taskSubmit($jsonString);           	
+                   $this->prize->taskSubmit($jsonString);           	
            	  	   $result=$this->prize->getPrizeNo($prizecode);
             	   $msg=$result['msg'];
             	   $code=$result['code'];
