@@ -308,14 +308,49 @@ li.lq{text-align:right; padding-left:320px; margin-top:-10px;}
 	padding: 6px;
 }
 .myprizes li.item .contents .prize-thumb {
+	width: 200px;
 	float: left;
 }
 .myprizes li.item .contents .prize-thumb img{
-	width: 180px;
-	height: 100px;
+	width: 100%;
+	height: 150px;
 }
 
+.myprizes li.item .contents .prize-info {
+	width: 522px;
+	float: left;
+	margin-left: 6px;
+	padding: 0 10px 10px 10px;
+	background-color: #FFF;
+}
+.prize-title {
+	margin-top: 10px;
+	color: #333;
+}
 
-
-
-
+.lottery-pieces-wrap {
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+.lottery-list {
+	height: 80px;
+	width: auto;
+}
+.lottery-piece {
+	width: 200px;	
+	height: 70px;
+	background-color: #173D00;
+	padding: 5px;
+	float: left;
+	margin-right: 5px;
+}
+.lottery-title {
+	margin: 3px 0 0 0;
+	color: #FFC000;
+	text-align: center;	
+}
+.lottery-info {
+	color: #FFF;
+	margin: 3px 0 0 0;	
+}

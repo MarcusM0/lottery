@@ -117,7 +117,7 @@ class CI_prize {
 	
 	
 	
-	function getPrizeNoList($sort,$limit,$parameter){
+	function getPrizeNoList($sort,$limit,$parameter, $mergeSamePrize = false){
 		$sql= "SELECT a.*,b.name as prizename,b.photo_url_s,  c.nick_name as username FROM prizenolog a, prize b ,user c WHERE a.prizecode=b.id AND a.userid=c.id";		
 		if(isset($parameter['userid'])&&$parameter['userid']){
 			$sql=$sql." and  a.userid = ".$parameter['userid'];
@@ -130,6 +130,13 @@ class CI_prize {
 		}	
 		$rs = $this->CI->db->query ( $sql);
 		$list = $rs->result_array ();
+		if($mergeSamePrize && !empty($list)){
+			$listMerged = array();
+			foreach($list as $item){
+				$listMerged[$item['prizecode']][] = $item;
+			}
+			return $listMerged;
+		}
         return  $list;
 	}	
 		

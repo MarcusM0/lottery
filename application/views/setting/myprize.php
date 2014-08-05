@@ -1,48 +1,18 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>撞大运</title>
-<link href="/css/style.css" rel="stylesheet" type="text/css" />
-<link href="/css/setting.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/js/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="/js/jquery.validate.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>撞大运</title>
+	<link href="/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/css/setting.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.validate.js"></script>
 </head>
+
 <body>
-<?php $user=$this->cache->get_user(); ?>
-<div id="closen" style="display:none">
-	<div class="toum"></div>
-	<div class="mydiv"></div>
-</div>
-
-
 <?php $this->load->view('include/top',array()); ?>	
 
-<div class="center" style="height:600px;padding-top:80px;background:#fff">
+<div class="center" style="padding-top:80px;background:#fff">
 	<div class="wrap">
 		<div class="wrap_bg">
 			<div class="frame_content">
@@ -62,22 +32,46 @@
 								</div>
 							</div>
 							
-							<div id="div_myprize" style="margin-top: -30px;">
+							<div id="div_myprize" class="clearfix" style="margin-top: -30px;">
 								<ul class="myprizes">
-									<li class="item">
-										<div class="contents clearfix">
-											<div class="prize-thumb">
-												<img src="/images/st1.jpg" />
+									<?php foreach($myPrizeNoList as $myPrizeNos): ?>
+										<?php $topPrizeNo = $myPrizeNos[0]; ?>
+										<li class="item">
+											<div class="contents clearfix">
+												<div class="prize-thumb">
+													<img src="<?php echo $topPrizeNo['photo_url_s']; ?>" />
+												</div>
+												
+												<div class="prize-info">
+													<h2 class="prize-title"><?php echo $topPrizeNo['prizename']; ?></h2>
+													
+													<div class="lottery-pieces-wrap">
+														<div class="lottery-list clearfix">
+															<?php foreach($myPrizeNos as $myPrizeNo): ?>
+															<div class="lottery-piece">
+																<h4 class="lottery-title">奖券</h4>
+																<p class="lottery-info">
+																	<strong>NO.</strong>
+																	<span><?php echo $myPrizeNo['prizeno']; ?></span>	
+																</p>
+																<p class="lottery-info">
+																	<strong>抽奖时间.</strong>
+																	<span>
+																		<?php echo date('Y-m-d H:i:s', strtotime($myPrizeNo['add_time'])); ?>
+																	</span>	
+																</p>
+																<p class="lottery-info">
+																	<strong>状态.</strong>
+																	<span>待开奖</span>	
+																</p>
+															</div>
+															<?php endforeach; ?>
+														</div>
+													</div>
+												</div>
 											</div>
-										</div>
-									</li>
-									<li class="item">
-										<div class="contents clearfix">
-											<div class="prize-thumb">
-												<img src="/images/st1.jpg" />
-											</div>
-										</div>
-									</li>
+										</li>
+									<?php endforeach; ?>
 								</ul>
 							</div>
 						</div>
@@ -95,4 +89,16 @@
 
 <?php $this->load->view('include/footer',array()); ?>	
 </body>
+
+<script>
+	$(document).ready(function(){
+		$('.lottery-list').each(function(k, list){
+			var width = 0;
+			$(list).find('.lottery-piece').each(function(k, piece){
+				width += $(piece).outerWidth() * 1 + 5;
+			});
+			$(list).width(width);
+		});
+	});
+</script>
 </html>

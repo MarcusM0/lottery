@@ -29,8 +29,13 @@ class setting extends CI_Controller {
 	
 	public function myprize() {
 		$user=$this->cache->get_user();
+		$myPrizeNoList = $this->prize->getPrizeNoList(null, null, array(
+			'userid' => $user['id']
+		), true);
+		
 		$this->load->view ( 'setting/myprize', array(
-			'user' => $user
+			'user' => $user,
+			'myPrizeNoList' => $myPrizeNoList
 		));
 	}
 	
