@@ -358,7 +358,7 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 $config['root'] = '';
 $config['domain'] = '';
-$config['task_domain'] = 'http://anypeoplep.gnway.cc:88';
+$config['task_domain'] = 'http://172.16.2.95:8084'; //'http://anypeoplep.gnway.cc:88';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

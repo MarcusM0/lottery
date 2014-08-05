@@ -29,7 +29,7 @@ class setting extends CI_Controller {
 	
 	public function myprize() {
 		$user=$this->cache->get_user();
-		$myPrizeNoList = $this->prize->getPrizeNoList(null, null, array(
+		$myPrizeNoList = $this->prize->getPrizeNoList(' add_time DESC ', null, array(
 			'userid' => $user['id']
 		), true);
 		

@@ -25,7 +25,7 @@ if(isset($obj)&&$obj){
 			$this->cache->set_verify($item->taskID.'|'.$item->result);
 		}
 ?>	    
-<li class="inputimg"  enterWay="<?php echo $item->enterWay?>" taskID="<?php echo $item->taskID?>" image="<?php echo $item->image?>">
+<li class="inputimg"  enterWay="<?php echo $item->enterWay?>" taskID="<?php echo $item->taskID?>" image="<?php echo $item->image[0]?>">
 <ul>
     <li class="<?php echo $class?> " taskID="<?php echo $item->taskID?>">
     <?php 

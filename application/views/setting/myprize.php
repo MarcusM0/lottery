@@ -55,14 +55,14 @@
 																	<span><?php echo $myPrizeNo['prizeno']; ?></span>	
 																</p>
 																<p class="lottery-info">
-																	<strong>抽奖时间.</strong>
-																	<span>
-																		<?php echo date('Y-m-d H:i:s', strtotime($myPrizeNo['add_time'])); ?>
-																	</span>	
-																</p>
-																<p class="lottery-info">
 																	<strong>状态.</strong>
 																	<span>待开奖</span>	
+																</p>
+																<p class="lottery-info">
+																	<strong>抽奖时间.</strong>
+																	<em>
+																		<?php echo date('Y-m-d H:i:s', strtotime($myPrizeNo['add_time'])); ?>
+																	</em>	
 																</p>
 															</div>
 															<?php endforeach; ?>
