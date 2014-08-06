@@ -60,7 +60,28 @@ class CI_prize {
         return  $list;
 	}
 	
+	const ISSUE_PENDING = 'pending';
 	
+	function createNewIssue()
+	{
+		$sql = " INSERT INTO lottery_issue SET issue_result = '".self::ISSUE_PENDING."' ";
+		return $this->CI->db->query($sql);  
+	}
+	
+	function getCurrentIssue()
+	{
+		$sql = " SELECT * FROM lottery_issue WHERE issue_result = '".self::ISSUE_PENDING."' ";
+		$result = $this->CI->db->query($sql);   
+		$issue = $result->row_array();
+		if(empty($issue)){
+			$this->createNewIssue();
+			$sql = " SELECT * FROM lottery_issue WHERE issue_result = 'pending''".self::ISSUE_PENDING."' ";
+			$result = $this->CI->db->query($sql);   
+			$issue = $result->row_array();
+		}
+		
+		return $issue;
+	}
 	
 	function getPrizeNo($id){
 		    $result=array();		
@@ -87,10 +108,12 @@ class CI_prize {
 		    	$this->CI->db->trans_start();   	
         	    $sql= "update prize set num_now= ".$num." where id=".$id;
  		        $rs = $this->CI->db->query ( $sql);  		    	
+ 		        $currentIssue = $this->getCurrentIssue();
 		        $prize['userid']=$user['id'];
 		        $prize['prizecode']=$id;       
 		        $prize['prizeno']=$num;
-		        $prize['add_time']=$now;                
+		        $prize['add_time']=$now;      
+		        $prize['id_lottery_issue'] = $currentIssue['id_lottery_issue'];          
 	            $this->CI->db->insert("prizenolog",$prize);  
 	            if($num==$total){
 	        	    $sql= "update prize set status= 2 where id=".$id;
@@ -118,16 +141,23 @@ class CI_prize {
 	
 	
 	function getPrizeNoList($sort,$limit,$parameter, $mergeSamePrize = false){
-		$sql= "SELECT a.*,b.name as prizename,b.photo_url_s,  c.nick_name as username FROM prizenolog a, prize b ,user c WHERE a.prizecode=b.id AND a.userid=c.id";		
+		$sql= "
+		SELECT  pn.*, 
+				p.name prizename, p.photo_url_s, 
+				u.nick_name username, 
+				i.issue_result
+		FROM prizenolog pn, prize p ,user u, lottery_issue i 
+		WHERE pn.prizecode=p.id AND pn.userid=u.id AND pn.id_lottery_issue = i.id_lottery_issue
+		";		
 		if(isset($parameter['userid'])&&$parameter['userid']){
-			$sql=$sql." and  a.userid = ".$parameter['userid'];
-		}				
+			$sql .= " AND  pn.userid = ".$parameter['userid'];
+		}
 		if(isset($sort)&&$sort){
 			$sql=$sql.' order by  '.$sort;
 		}	
 		if(isset($limit)&&$limit){
 			$sql=$sql.' '.$limit;
-		}	
+		}
 		$rs = $this->CI->db->query ( $sql);
 		$list = $rs->result_array ();
 		if($mergeSamePrize && !empty($list)){

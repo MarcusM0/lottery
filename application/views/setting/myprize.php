@@ -49,14 +49,28 @@
 														<div class="lottery-list clearfix">
 															<?php foreach($myPrizeNos as $myPrizeNo): ?>
 															<div class="lottery-piece">
-																<h4 class="lottery-title">奖券</h4>
+																<h4 class="lottery-title">
+																	奖券
+																	<small style="font-weight: normal;">
+																		第<span><?php echo $myPrizeNo['id_lottery_issue']; ?></span>期
+																	</small>
+																</h4>
 																<p class="lottery-info">
-																	<strong>NO.</strong>
+																	<strong>奖券号码: </strong>
 																	<span><?php echo $myPrizeNo['prizeno']; ?></span>	
 																</p>
 																<p class="lottery-info">
-																	<strong>状态.</strong>
-																	<span>待开奖</span>	
+																	<strong>状态: </strong>
+																	<?php if($myPrizeNo['issue_result'] == CI_prize::ISSUE_PENDING): ?>
+																		<span>待开奖...</span>
+																	<?php elseif($myPrizeNo['prizeno'] == $myPrizeNo['issue_result']): ?>
+																		<strong style="color: #FF0;">恭喜中奖</strong>
+																	<?php else: ?>
+																		<span style="color: #06F;">
+																			未中奖
+																			(开奖号码: <?php echo $myPrizeNo['issue_result']; ?>)	
+																		</span>
+																	<?php endif; ?>
 																</p>
 																<p class="lottery-info">
 																	<strong>抽奖时间.</strong>

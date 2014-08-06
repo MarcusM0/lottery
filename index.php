@@ -1,6 +1,6 @@
 <?php
 
-require_once './myDebug/myDebug.class.php';
+require_once dirname(__FILE__) . '/myDebug/myDebug.class.php';
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
