@@ -20,7 +20,7 @@ $user=$this->cache->get_user();
   }
  ?>
 
- <li class="cjw"><a href="#">我的抽奖</a></li>
+ <li class="cjw"><a href="<?php echo site_url('setting/myprize')?>">我的抽奖</a></li>
  <li class="cjc"><a href="#">抽奖规则</a></li>
  </ul>
  </div>

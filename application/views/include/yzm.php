@@ -5,8 +5,9 @@
     <li class="yzn1"><img src="images/yzm.png" /></li>
    <?php 
 $task_domain=$this->config->item('task_domain');	
-$ff=file_get_contents($task_domain."/sunyardEngine/getTasks?enterTaskNum=2");
-//$ff='[{"result":"","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_9"},{"result":"","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_10"},{"result":"18924671673","taskType":"2","image":["http://localhost:88/imageWeb/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228_1.JPG"],"enterWay":"0","taskID":"PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_PA_155_1"}]';
+//$ff=file_get_contents($task_domain."/sunyardEngine/getTasks?enterTaskNum=2");
+$ff='[{"result":"","OID":"1","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_9"},{"result":"","OID":"2","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_10"},{"result":"18924671673","OID":"3","taskType":"2","image":["http://localhost:88/imageWeb/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228_1.JPG"],"enterWay":"0","taskID":"PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_PA_155_1"}]';
+$this->cache->set_verify($ff);
 $obj = json_decode($ff);
 ?> 
 <?php 
@@ -20,12 +21,9 @@ if(isset($obj)&&$obj){
 		}else if($key==2){
 			$class="yzn5";
 		}
-		if($item->taskType=="2"){
-			$verify=$item->result;
-			$this->cache->set_verify($item->taskID.'|'.$item->result);
-		}
+
 ?>	    
-<li class="inputimg"  enterWay="<?php echo $item->enterWay?>" taskID="<?php echo $item->taskID?>" image="<?php echo $item->image[0]?>">
+<li class="inputimg"  enterWay="<?php echo $item->enterWay?>" taskID="<?php echo $item->taskID?>" >
 <ul>
     <li class="<?php echo $class?> " taskID="<?php echo $item->taskID?>">
     <?php 
@@ -37,11 +35,12 @@ if(isset($obj)&&$obj){
    <?php
        	      }else{
       ?>   	
-      <img style="margin-left:5px;float:left;width:60px;height:60px;" class="reimg" src=<?php echo $image?> /> 	      	
+     <div style="margin-left:3px;float:left;text-align:center;width:60px;"> <img style="float:left;width:60px;height:60px;" class="reimg" src=<?php echo $image?> /> 	</div>      	
       <?php   	      	
        	      }
        }
     ?>
+       <img style="margin-left:5px;float:left;" class="reimg" src="/images/refresh.png" /> 	
     </li>    
     <li class="yzn3">
     <?php 
@@ -52,13 +51,14 @@ if(isset($obj)&&$obj){
       }else{
       	foreach ($images as $check) {
     ?>
-  <input name="box" type="checkbox" id="result" style="float:left;width:30px;" />        		
+  <div style="margin-left:3px;float:left;text-align:center;width:60px;"><input name="box" type="checkbox" id="result" style="width:30px;" /> </div>       		
   <?php  
       	}      	
       }
     ?>
-
     </li>
+
+    
 </ul>
 </li>
 <?php
@@ -67,7 +67,9 @@ if(isset($obj)&&$obj){
 ?>    
     <li class="lq"><a href="javascript:void(0)" id="btn_submit"><img src="images/lq.png"/></a></li>
 </ul>
-<div id="message" class="houj" style="font-weight:bold" ><?php echo (isset($msg)&&$msg)? $msg:'';?></div>
+<div id="message" class="houj" style="display:block;font-weight:bold" >
+<?php echo (isset($msg)&&$msg)? $msg:'';?>
+</div>
 </div>
 
 <script type="text/javascript">
@@ -90,40 +92,30 @@ $('#btn_submit').click(function(){
           var enterWay=$(this).attr("enterWay");  
           if(enterWay=="0"){
               var taskID=$(this).attr("taskID");  
-              var image=$(this).attr("image");  
               var result=$("#result",this).val();
               if(result==null||result==""){
     				//inputErrorStyleWaver($("#result",this).get(0));
               }
               var item={};
-              var images=Array();
-              item.taskID=taskID;  
-              item.image=images;      
+              item.taskID=taskID;   
               item.result=result;
-              item.enterWay=enterWay;
               json.push(item);              
           }else{
               var taskID=$(this).attr("taskID");  
-              var image=$(this).attr("image");  
-              var result="";
-              
+              var result="";              
               $("input[name='box']",li).each(function(){
-                  if ($(this).attr('checked') ==false) {
-                	  result+="0";
-                  }else{
+                  if ($(this).attr('checked') =='checked') {
                 	  result+="1";
+                  }else{
+                	  result+="0";
                   }
-             });
-                            
+             });                            
               if(result==null||result==""){
     				//inputErrorStyleWaver($("#result",this).get(0));
               }
-              var item={};
-              var images=Array();              
+              var item={};   
               item.taskID=taskID;  
-              item.image=images;    
               item.result=result;
-              item.enterWay=enterWay;
               json.push(item);                
           }
        
