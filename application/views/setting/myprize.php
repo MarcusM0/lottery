@@ -66,7 +66,7 @@
 																	<?php elseif($myPrizeNo['action_code'] == $myPrizeNo['issue_result']): ?>
 																		<strong style="color: #FF0;">恭喜中奖</strong>
 																	<?php else: ?>
-																		<span style="color: #06F;">
+																		<span style="color: #A5B0A2;">
 																			未中奖
 																			(开奖号码: <?php echo $myPrizeNo['issue_result']; ?>)	
 																		</span>
