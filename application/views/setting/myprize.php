@@ -49,19 +49,33 @@
 														<div class="lottery-list clearfix">
 															<?php foreach($myPrizeNos as $myPrizeNo): ?>
 															<div class="lottery-piece">
-																<h4 class="lottery-title">奖券</h4>
+																<h4 class="lottery-title">
+																	奖券
+																	<small style="font-weight: normal;">
+																		第<span><?php echo $myPrizeNo['issue_num']; ?></span>期
+																	</small>
+																</h4>
 																<p class="lottery-info">
-																	<strong>NO.</strong>
-																	<span><?php echo $myPrizeNo['prizeno']; ?></span>	
+																	<strong>奖券号码: </strong>
+																	<span><?php echo $myPrizeNo['action_code']; ?></span>	
 																</p>
 																<p class="lottery-info">
-																	<strong>状态.</strong>
-																	<span>待开奖</span>	
+																	<strong>状态: </strong>
+																	<?php if($myPrizeNo['issue_result'] == CI_prize::ISSUE_PENDING): ?>
+																		<span>待开奖...</span>
+																	<?php elseif($myPrizeNo['action_code'] == $myPrizeNo['issue_result']): ?>
+																		<strong style="color: #FF0;">恭喜中奖</strong>
+																	<?php else: ?>
+																		<span style="color: #A5B0A2;">
+																			未中奖
+																			(开奖号码: <?php echo $myPrizeNo['issue_result']; ?>)	
+																		</span>
+																	<?php endif; ?>
 																</p>
 																<p class="lottery-info">
 																	<strong>抽奖时间.</strong>
 																	<em>
-																		<?php echo date('Y-m-d H:i:s', strtotime($myPrizeNo['add_time'])); ?>
+																		<?php echo date('Y-m-d H:i:s', strtotime($myPrizeNo['created_time'])); ?>
 																	</em>	
 																</p>
 															</div>

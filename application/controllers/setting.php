@@ -29,23 +29,23 @@ class setting extends CI_Controller {
 	
 	public function myprize() {
 		$user=$this->cache->get_user();
-		$myPrizeNoList = $this->prize->getPrizeNoList(' add_time DESC ', null, array(
+		$myPrizeNoList = $this->prize->getPrizeNoList(' created_time DESC ', null, array(
 			'userid' => $user['id']
 		), true);
 		
-		$this->load->view ( 'setting/myprize', array(
+		$this->load->view ('setting/myprize', array(
 			'user' => $user,
 			'myPrizeNoList' => $myPrizeNoList
 		));
 	}
 	
 	public function updateInfo() {
-		   $user=$this->cache->get_user();   
-		   $mobile=$this->input->post("mobile");			   
-		   $userinfo['mobile']=$mobile;	   	   
-		   $this->user->updateInfo($userinfo,$user['id']);
-		   //header("Location:".site_url('setting'));  	
-		   echo true;
+	   $user=$this->cache->get_user();   
+	   $mobile=$this->input->post("mobile");			   
+	   $userinfo['mobile']=$mobile;	   	   
+	   $this->user->updateInfo($userinfo,$user['id']);
+	   //header("Location:".site_url('setting'));  	
+	   echo true;
 	}	
 	
 	public function isPassword(){
