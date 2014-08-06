@@ -60,27 +60,56 @@ class CI_prize {
         return  $list;
 	}
 	
-	const ISSUE_PENDING = 'pending';
-	
-	function createNewIssue()
+	function resetPrizeNumNow($id_prize)
 	{
-		$sql = " INSERT INTO lottery_issue SET issue_result = '".self::ISSUE_PENDING."' ";
+		$sql = " UPDATE prize SET num_now = 0 WHERE id = {$id_prize} ";
+		return $this->CI->db->query($sql);
+	}
+	
+	function getToRunLotteryPrizes()
+	{
+		$sql = " SELECT * FROM prize WHERE num_now >= num "; 
+		$result = $this->CI->db->query($sql);
+		
+		return $result->result_array();
+	}
+	
+	const ISSUE_PENDING = 'pending';
+	const ISSUE_NUM_BEGINING = 1;
+	function createNewLotteryIssueOfPrize($id_prize)
+	{
+		$sql = " SELECT MAX(issue_num) max_issue_num FROM lottery_issue WHERE id_prize = '{$id_prize}' ";
+		$result = $this->CI->db->query($sql);
+		$row = $result->row_array();
+		if(empty($row)){
+			$newmaxIssueNum = self::ISSUE_NUM_BEGINING;
+		}else{
+			$newmaxIssueNum = $row['max_issue_num'] + 1;
+		}
+		
+		$sql = " INSERT INTO lottery_issue SET id_prize = {$id_prize}, issue_num = {$newmaxIssueNum}, issue_result = '".self::ISSUE_PENDING."' ";
 		return $this->CI->db->query($sql);  
 	}
 	
-	function getCurrentIssue()
+	function getCurrentLotteryIssueOfPrize($id_prize, $createIfNull = false)
 	{
-		$sql = " SELECT * FROM lottery_issue WHERE issue_result = '".self::ISSUE_PENDING."' ";
-		$result = $this->CI->db->query($sql);   
+		$sql = " SELECT * FROM lottery_issue WHERE id_prize = {$id_prize} AND issue_result = '".self::ISSUE_PENDING."' ";
+		$result = $this->CI->db->query($sql);
 		$issue = $result->row_array();
-		if(empty($issue)){
-			$this->createNewIssue();
-			$sql = " SELECT * FROM lottery_issue WHERE issue_result = 'pending''".self::ISSUE_PENDING."' ";
+		if(empty($issue) && $createIfNull){
+			$this->createNewLotteryIssueOfPrize($id_prize);
+			$sql = " SELECT * FROM lottery_issue WHERE id_prize = {$id_prize} AND issue_result = '".self::ISSUE_PENDING."' ";
 			$result = $this->CI->db->query($sql);   
 			$issue = $result->row_array();
 		}
 		
 		return $issue;
+	}
+	
+	function setLotteryResult($id_lottery_issue, $result)
+	{
+		$sql= "UPDATE lottery_issue SET issue_result = '{$result}' WHERE id_lottery_issue = {$id_lottery_issue}";
+		return $this->CI->db->query($sql); 
 	}
 	
 	function getPrizeNo($id){
@@ -108,13 +137,13 @@ class CI_prize {
 		    	$this->CI->db->trans_start();   	
         	    $sql= "update prize set num_now= ".$num." where id=".$id;
  		        $rs = $this->CI->db->query ( $sql);  		    	
- 		        $currentIssue = $this->getCurrentIssue();
-		        $prize['userid']=$user['id'];
-		        $prize['prizecode']=$id;       
-		        $prize['prizeno']=$num;
-		        $prize['add_time']=$now;      
-		        $prize['id_lottery_issue'] = $currentIssue['id_lottery_issue'];          
-	            $this->CI->db->insert("prizenolog",$prize);  
+ 		        $currentIssue = $this->getCurrentLotteryIssueOfPrize($id, true);
+	            $this->CI->db->insert("user_lottery_action", array(
+	            	'id_user' => $user['id'],
+	            	'action_code' => $num,
+	            	'id_lottery_issue' => $currentIssue['id_lottery_issue'],
+	            	'created_time' => $now
+	            ));  
 	            if($num==$total){
 	        	    $sql= "update prize set status= 2 where id=".$id;
 	 		        $rs = $this->CI->db->query ( $sql);  	            	
@@ -142,16 +171,24 @@ class CI_prize {
 	
 	function getPrizeNoList($sort,$limit,$parameter, $mergeSamePrize = false){
 		$sql= "
-		SELECT  pn.*, 
-				p.name prizename, p.photo_url_s, 
+		SELECT  p.name prizename, p.photo_url_s, 
+				ula.*, 
 				u.nick_name username, 
-				i.issue_result
-		FROM prizenolog pn, prize p ,user u, lottery_issue i 
-		WHERE pn.prizecode=p.id AND pn.userid=u.id AND pn.id_lottery_issue = i.id_lottery_issue
-		";		
+				li.issue_result, li.issue_num, li.id_prize
+		FROM prize p
+		LEFT JOIN lottery_issue li ON p.id = li.id_prize 
+		LEFT JOIN user_lottery_action ula ON li.id_lottery_issue = ula.id_lottery_issue 
+		LEFT JOIN user u ON ula.id_user = u.id
+		";
+		
+		$conditions = array();
 		if(isset($parameter['userid'])&&$parameter['userid']){
-			$sql .= " AND  pn.userid = ".$parameter['userid'];
+			$conditions[] = 'ula.id_user = "'. $parameter['userid'] .'"';
 		}
+		if(!empty($conditions)){
+			$sql .= ' WHERE ' . implode(' AND ', $conditions);
+		}
+		
 		if(isset($sort)&&$sort){
 			$sql=$sql.' order by  '.$sort;
 		}	
@@ -162,8 +199,8 @@ class CI_prize {
 		$list = $rs->result_array ();
 		if($mergeSamePrize && !empty($list)){
 			$listMerged = array();
-			foreach($list as $item){
-				$listMerged[$item['prizecode']][] = $item;
+			foreach($list as $item){fdump($item);
+				$listMerged[$item['id_prize']][] = $item;
 			}
 			return $listMerged;
 		}

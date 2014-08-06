@@ -52,18 +52,18 @@
 																<h4 class="lottery-title">
 																	奖券
 																	<small style="font-weight: normal;">
-																		第<span><?php echo $myPrizeNo['id_lottery_issue']; ?></span>期
+																		第<span><?php echo $myPrizeNo['issue_num']; ?></span>期
 																	</small>
 																</h4>
 																<p class="lottery-info">
 																	<strong>奖券号码: </strong>
-																	<span><?php echo $myPrizeNo['prizeno']; ?></span>	
+																	<span><?php echo $myPrizeNo['action_code']; ?></span>	
 																</p>
 																<p class="lottery-info">
 																	<strong>状态: </strong>
 																	<?php if($myPrizeNo['issue_result'] == CI_prize::ISSUE_PENDING): ?>
 																		<span>待开奖...</span>
-																	<?php elseif($myPrizeNo['prizeno'] == $myPrizeNo['issue_result']): ?>
+																	<?php elseif($myPrizeNo['action_code'] == $myPrizeNo['issue_result']): ?>
 																		<strong style="color: #FF0;">恭喜中奖</strong>
 																	<?php else: ?>
 																		<span style="color: #06F;">
@@ -75,7 +75,7 @@
 																<p class="lottery-info">
 																	<strong>抽奖时间.</strong>
 																	<em>
-																		<?php echo date('Y-m-d H:i:s', strtotime($myPrizeNo['add_time'])); ?>
+																		<?php echo date('Y-m-d H:i:s', strtotime($myPrizeNo['created_time'])); ?>
 																	</em>	
 																</p>
 															</div>
