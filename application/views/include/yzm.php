@@ -40,7 +40,7 @@ if(isset($obj)&&$obj){
        	      }
        }
     ?>
-       <img style="margin-left:5px;float:left;" class="reimg" src="/images/refresh.png" /> 	
+       <img style="margin-left:5px;float:left;" class="refresh_btn" src="/images/refresh.png" /> 	
     </li>    
     <li class="yzn3">
     <?php 
@@ -75,11 +75,11 @@ if(isset($obj)&&$obj){
 <script type="text/javascript">
 $(".inputimg").each(function(){
     var content=this;
-	$('.reimg',content).click(function(){
+	$('.refresh_btn',content).click(function(){
 	      var taskID=  $(content).attr("taskID");
 	      $.post('<?php echo site_url("ajx/remote/refresh")?>',{taskID:taskID},function(result){
               var result=eval('(' + result + ')');
-	    	  $(".reimg",content).attr("src",result[0].image);
+	    	  $(".refresh_btn",content).attr("src",result[0].image);
 	      },'json');
 	});	      
 });	

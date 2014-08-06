@@ -22,7 +22,7 @@
 }
 </style>
 <body>
-<form action="/reg/doreg" method="post" id="formReg"  name="formReg">
+<form action="<?php echo site_url('reg/doreg')?>" method="post" id="formReg"  name="formReg">
 <div >
 <div class="toum"></div>
 <div class="mydiv">

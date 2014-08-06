@@ -34,7 +34,7 @@
     <li class="login loginfont">密  码：<input  type="password" placeholder="密 码" id="password" name="password"/></li>
     <label style="font-weight:bold;padding-left:30px;color:red;" id="msg"> </label>
 
-    <li class="miz"><a href="">忘记密码?</a></li>
+    <li class="miz"><a href="<?php echo site_url("pwd")?>">忘记密码?</a></li>
     <li class="submit">
     <input type="submit" id="submit" value="登 录">
     <li class="mizn"><a href="<?php echo site_url("reg")?>">立即注册</a></li>

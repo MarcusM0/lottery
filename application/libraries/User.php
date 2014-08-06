@@ -117,6 +117,21 @@ class CI_user {
         }
         return  $u;
 	}		
+	
+	function updatePasswordByEmail($user){
+		$data = array(
+		'password'=>md5($user['password']),
+		);
+		$where = array('email'=>$user['email']);
+		$where_login = array('account'=>$user['email']);
+		var_dump($user);		
+		$this->CI->db->trans_start();
+		$this->CI->db->update('user',$data,$where); 
+		$this->CI->db->update('login',$data,$where_login); 		
+		$this->CI->db->trans_complete();
+        return  $u;
+	}		
+	
 
 }
 

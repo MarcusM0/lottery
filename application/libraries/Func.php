@@ -12,7 +12,11 @@ class CI_func {
 	function getDomain(){
 	  return $this->domain;
 	}
-	
+    function  getRdCard(){
+	    $randStr = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
+	    $rand = substr($randStr,0,6);	
+	    return $rand; 
+	}		
 	
 	function mjz_format_time($time) {
 		if (empty ( $time )) {
