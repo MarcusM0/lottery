@@ -1,3 +1,16 @@
+<script id="item_tpl" type="text/template">
+<ul>
+    <li taskID="{{taskID}}" class="yzn5 ">       
+      <img src="http://localhost:88/imageWeb/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228_1.JPG" class="reimg" style="margin-left:5px;float:left;"> 	
+      <img src="/images/refresh.png" class="refresh_btn" style="margin-left:5px;float:left;"> 	
+    </li>    
+    <li class="yzn3">     	
+    <input placeholder="填写以上信息" id="result">         
+    </li>
+</ul>
+</script>
+
+<script type="text/javascript" src="/js/mustache.js"></script>
 <input type="hidden" id="code" value="<?php echo $id?>"/>
 <div class="yzn">
 <div class="close" onclick="document.getElementById('closen').style.display=(document.getElementById('closen').style.display=='none')?'':'none';document.location.reload();" ><img src="images/close.png" /></div>
@@ -7,7 +20,7 @@
 $task_domain=$this->config->item('task_domain');	
 //$ff=file_get_contents($task_domain."/sunyardEngine/getTasks?enterTaskNum=2");
 $ff='[{"result":"","OID":"1","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_9"},{"result":"","OID":"2","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_10"},{"result":"18924671673","OID":"3","taskType":"2","image":["http://localhost:88/imageWeb/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228_1.JPG"],"enterWay":"0","taskID":"PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_PA_155_1"}]';
-$this->cache->set_verify($ff);
+$task_sign=$this->func->encrypt($ff,'E','lottery123');
 $obj = json_decode($ff);
 ?> 
 <?php 
@@ -72,20 +85,26 @@ if(isset($obj)&&$obj){
 </div>
 </div>
 
+<input type="hidden" id="sign" value="<?php echo $task_sign?>"/>
+
 <script type="text/javascript">
 $(".inputimg").each(function(){
     var content=this;
 	$('.refresh_btn',content).click(function(){
+		  var li=this; 
+		  var sign=  $("#sign").val();
 	      var taskID=  $(content).attr("taskID");
-	      $.post('<?php echo site_url("ajx/remote/refresh")?>',{taskID:taskID},function(result){
-              var result=eval('(' + result + ')');
-	    	  $(".refresh_btn",content).attr("src",result[0].image);
+	      $.post('<?php echo site_url("ajx/remote/refresh")?>',{taskID:taskID,sign:sign},function(result){
+               $("#sign").val(result['signout']);
+               var output=Mustache.render($("#item_tpl").html(),result['current']);
+               alert(output);
 	      },'json');
 	});	      
 });	
 
 $('#btn_submit').click(function(){
 	 var code =$("#code").val();
+	 var sign =$("#sign").val();
 	  var json=Array();
 	  $(".inputimg").each(function(){
 		  var li=this;
@@ -122,7 +141,7 @@ $('#btn_submit').click(function(){
 	 });
 		 
 	 var jsonString= JSON.stringify(json);
-    $.post('<?php echo site_url("ajx/lottery/dosubmit")?>',{jsonString:jsonString,code:code},function(result){
+    $.post('<?php echo site_url("ajx/lottery/dosubmit")?>',{jsonString:jsonString,code:code,sign:sign},function(result){
           var msg=result.msg;           
           $("#message").html(msg);
           if(result.task_html){

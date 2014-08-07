@@ -6,6 +6,7 @@ $user=$this->cache->get_user();
  <div class="logo"><a href="<?php echo site_url()?>"><img src="/images/logo.png" /></a ></div>
  <div class="chj">
  <ul>
+  <li><a href="<?php echo site_url()?>">首页</a></li>
  <?php 
   if(isset($user)&&$user){
  ?>

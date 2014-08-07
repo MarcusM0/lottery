@@ -25,16 +25,16 @@ class lottery extends CI_Controller {
 		   $user=$this->cache->get_user();	
            $jsonString=$this->input->post("jsonString");
            $prizecode=$this->input->post("code");
-           $input = json_decode($jsonString);           
-		   $v=$this->cache->get_verify();
+           $sign=$this->input->post("sign");
+           $input = json_decode($jsonString);                   
+		   $v=$this->func->encrypt($sign,'D','lottery123');	   
            $obj = json_decode($v);
 		   $return=array();
 		   $rs=false;
            $msg="验证不通过!";   
            $code=-1;   
            $task_html="";	   
-           $task_title="";
-                      
+           $task_title="";                      
            foreach ($obj as $item) {
            	  if($item->taskType=='2'){
            	  	    $taskId=$item->taskID;
@@ -47,8 +47,6 @@ class lottery extends CI_Controller {
 	                }          	  	
            	  }
            }
-           
-           
            if($rs==true){
 			       foreach ($obj as $item) {
 			       	  foreach ($input as $o) {
