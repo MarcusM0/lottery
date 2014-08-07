@@ -1,16 +1,4 @@
-<script id="item_tpl" type="text/template">
-<ul>
-    <li taskID="{{taskID}}" class="yzn5 ">       
-      <img src="http://localhost:88/imageWeb/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228_1.JPG" class="reimg" style="margin-left:5px;float:left;"> 	
-      <img src="/images/refresh.png" class="refresh_btn" style="margin-left:5px;float:left;"> 	
-    </li>    
-    <li class="yzn3">     	
-    <input placeholder="填写以上信息" id="result">         
-    </li>
-</ul>
-</script>
 
-<script type="text/javascript" src="/js/mustache.js"></script>
 <input type="hidden" id="code" value="<?php echo $id?>"/>
 <div class="yzn">
 <div class="close" onclick="document.getElementById('closen').style.display=(document.getElementById('closen').style.display=='none')?'':'none';document.location.reload();" ><img src="images/close.png" /></div>
@@ -96,8 +84,7 @@ $(".inputimg").each(function(){
 	      var taskID=  $(content).attr("taskID");
 	      $.post('<?php echo site_url("ajx/remote/refresh")?>',{taskID:taskID,sign:sign},function(result){
                $("#sign").val(result['signout']);
-               var output=Mustache.render($("#item_tpl").html(),result['current']);
-               alert(output);
+               $(content).html(result['current']);
 	      },'json');
 	});	      
 });	

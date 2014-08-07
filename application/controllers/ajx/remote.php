@@ -32,16 +32,15 @@ class remote extends CI_Controller {
        }
 	   $url=$task_domain."/sunyardEngine/refresh?refreshTaskID=".$taskID.'&refreshTaskType=2';
        //$ff=file_get_contents($url);
-       $ff='[{"result":"2","OID":"1","taskType":"2","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_9"}]';
+       $ff='[{"result":"2","OID":"1","taskType":"2","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_9"}]';
        $obj = json_decode($ff);       
        $objsign=array_merge($objsign,$obj);       
        $stringsignout=json_encode ( $objsign);	
        $signout=$this->func->encrypt($stringsignout,'E','lottery123');	 
-       
-
+       $refresh_html = $this->load->view('include/yzm_refresh',array("refresh"=>$obj[0]),true); 
        $return['signout']=$signout;
-       $return['current']=$obj[0];
-	   $placehtml = json_encode ( $return);	 
+       $return['current']=$refresh_html;
+       $placehtml = json_encode ( $return);	 
 	   echo   $placehtml;  
 
 	}	
