@@ -9,7 +9,7 @@ a{text-decoration:none;}
  position:fixed;
  width:100%;
  background-color:#173d00;
- z-index:999999999999999999999999999;
+ z-index:999;
 }
 .topn{ width:1080px; margin:0 auto;}
 .logo{ padding-left:10px;float:left;}
@@ -69,7 +69,7 @@ li.xtplr{ margin-right:0px;}
 
 .mydiv {
 background:url(../images/tbg.png) no-repeat;
-z-index:9999;
+z-index:99999999;
 width: 680px;
 height:744px;
 left:50%;
