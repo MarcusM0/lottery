@@ -5,6 +5,10 @@
 <title>撞大运</title>
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="/js/tip/jquery.cluetip.js"></script>
+<script type="text/javascript" src="/js/tip/jquery.cluetip.css"></script>
+
+
 </head>
 <body>
 <?php 
@@ -29,7 +33,7 @@ $user=$this->cache->get_user();
  </div>
  <div class="haonr">
  <ul>
-     <li>幸运数从何而来？</li>
+     <li><a class="where" title="1111111111">幸运数从何而来？</a></li>
      <li>幸运数如何决定谁获奖？</li>
  </ul>
  </div>
@@ -220,6 +224,7 @@ $prize7=$this->prize->getPrizeBySort(7);
 </body>
 </html>
 <script type="text/javascript">
+
 $(".btn_cj").bind("click",function(){
 	var islogin=$(this).attr("islogin");
 	if(islogin=="false"){
