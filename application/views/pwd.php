@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>撞大运</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/style002.css" rel="stylesheet" type="text/css" />
  <script src="/js/jquery-1.7.min.js"></script>   
  <script src="/js/jquery.validate.js"></script>  
  <script src="/js/pwd.js"></script>
@@ -36,7 +36,7 @@
     </li>
     <li class="login loginfont">邮  箱：<input value="" placeholder="邮 箱" id="email" name="email" /></li>
 
-    <li class="miz">想起密码了<a href="<?php echo site_url("login")?>">登录</a></li>
+    <li class="miz" style="padding-right:20px;">想起密码了<a href="<?php echo site_url("login")?>">登录</a></li>
     
 
   

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>撞大运</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/style002.css" rel="stylesheet" type="text/css" />
  <script src="/js/jquery-1.7.min.js"></script>   
  <script src="/js/jquery.validate.js"></script>  
  <script src="/js/reg.js"></script>
@@ -44,7 +44,7 @@
     <input value="" placeholder="验证码"  id="code" name="code" />
      
     </li>
-    <li class="miz">已有账号请<a href="<?php echo site_url("login")?>">登录</a></li>
+    <li class="miz" style="padding-right:20px;"><div style="margin-left:30px;float:left"><a href="<?php echo site_url("agree")?>" target="_blank">使用协议</a></div>   已有账号请<a href="<?php echo site_url("login")?>">登录</a></li>
     <li class="submit">
     <input type="submit" id="submit" value="立即注册">
     </li>
