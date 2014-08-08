@@ -5,10 +5,17 @@
 <title>撞大运</title>
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="/js/tip/jquery.cluetip.js"></script>
-<script type="text/javascript" src="/js/tip/jquery.cluetip.css"></script>
+<script type="text/javascript" src="/js/tip/src/jquery.poshytip.js"></script>
 
 
+
+<link rel="stylesheet" href="/js/tip/src/tip-yellow/tip-yellow.css" type="text/css" />
+<link rel="stylesheet" href="/js/tip/src/tip-violet/tip-violet.css" type="text/css" />
+<link rel="stylesheet" href="/js/tip/src/tip-darkgray/tip-darkgray.css" type="text/css" />
+<link rel="stylesheet" href="/js/tip/src/tip-skyblue/tip-skyblue.css" type="text/css" />
+<link rel="stylesheet" href="/js/tip/src/tip-yellowsimple/tip-yellowsimple.css" type="text/css" />
+
+<link rel="stylesheet" href="/js/tip/src/tip-green/tip-green.css" type="text/css" />
 </head>
 <body>
 <?php 
@@ -33,8 +40,8 @@ $user=$this->cache->get_user();
  </div>
  <div class="haonr">
  <ul>
-     <li><a class="where" title="1111111111">幸运数从何而来？</a></li>
-     <li>幸运数如何决定谁获奖？</li>
+     <li><a id="where" >幸运数从何而来？</a></li>
+     <li><a id="who">幸运数如何决定谁获奖？</a></li>
  </ul>
  </div>
  </div>
@@ -224,7 +231,41 @@ $prize7=$this->prize->getPrizeBySort(7);
 </body>
 </html>
 <script type="text/javascript">
+//$('.where').poshytip();
 
+
+
+$('#where').poshytip({
+
+	content: '幸运数字从何而来？幸运数字从何而来？幸运数字从何而来？幸运数字从何而来？幸运数字从何而来？',
+	alignTo: 'target',
+	alignX: 'left',
+	alignY: 'center',
+	offsetX: 30,
+	showTimeout: 100
+});
+
+$('#who').poshytip({
+
+	content: '幸运数如何决定谁获奖？幸运数如何决定谁获奖？幸运数如何决定谁获奖？幸运数如何决定谁获奖？幸运数如何决定谁获奖？',
+	alignTo: 'target',
+	alignX: 'left',
+	alignY: 'center',
+	offsetX: 30,
+	showTimeout: 100
+});
+
+$('#role').poshytip({
+	className: 'tip-yellowsimple',
+	content: '抽奖规则抽奖规则抽奖规则抽奖规则抽奖规则抽奖规则抽奖规则抽奖规则抽奖规则抽奖规则',
+
+	alignTo: 'target',
+	alignX: 'center',
+	alignY: 'bottom',
+	offsetX: 0,
+	offsetY: 15,
+	showTimeout: 100
+});
 $(".btn_cj").bind("click",function(){
 	var islogin=$(this).attr("islogin");
 	if(islogin=="false"){
