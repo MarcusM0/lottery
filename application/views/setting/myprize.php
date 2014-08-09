@@ -12,6 +12,11 @@
 <body>
 <?php $this->load->view('include/top',array()); ?>	
 
+<div id="closen" style="display:none">
+	<div class="toum"></div>
+	<div class="mydiv"></div>
+</div>
+
 <div class="center" style="padding-top:80px;background:#fff">
 	<div class="wrap">
 		<div class="wrap_bg">
@@ -32,61 +37,53 @@
 								</div>
 							</div>
 							
-							<div id="div_myprize" class="clearfix" style="margin-top: -30px;">
-								<ul class="myprizes">
-									<?php foreach($myPrizeNoList as $myPrizeNos): ?>
-										<?php $topPrizeNo = $myPrizeNos[0]; ?>
-										<li class="item">
-											<div class="contents clearfix">
-												<div class="prize-thumb">
-													<img src="<?php echo $topPrizeNo['photo_url_s']; ?>" />
-												</div>
-												
-												<div class="prize-info">
-													<h2 class="prize-title"><?php echo $topPrizeNo['prizename']; ?></h2>
-													
-													<div class="lottery-pieces-wrap">
-														<div class="lottery-list clearfix">
-															<?php foreach($myPrizeNos as $myPrizeNo): ?>
-															<div class="lottery-piece">
-																<h4 class="lottery-title">
-																	奖券
-																	<small style="font-weight: normal;">
-																		第<span><?php echo $myPrizeNo['issue_num']; ?></span>期
-																	</small>
-																</h4>
-																<p class="lottery-info">
-																	<strong>奖券号码: </strong>
-																	<span><?php echo $myPrizeNo['action_code']; ?></span>	
-																</p>
-																<p class="lottery-info">
-																	<strong>状态: </strong>
-																	<?php if($myPrizeNo['issue_result'] == CI_prize::ISSUE_PENDING): ?>
-																		<span>待开奖...</span>
-																	<?php elseif($myPrizeNo['action_code'] == $myPrizeNo['issue_result']): ?>
-																		<strong style="color: #FF0;">恭喜中奖</strong>
-																	<?php else: ?>
-																		<span style="color: #A5B0A2;">
-																			未中奖
-																			(开奖号码: <?php echo $myPrizeNo['issue_result']; ?>)	
-																		</span>
-																	<?php endif; ?>
-																</p>
-																<p class="lottery-info">
-																	<strong>抽奖时间.</strong>
-																	<em>
-																		<?php echo date('Y-m-d H:i:s', strtotime($myPrizeNo['created_time'])); ?>
-																	</em>	
-																</p>
-															</div>
-															<?php endforeach; ?>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
+							<div class="clearfix" style="margin-top: -30px;">
+								<table class="myprizes">
+									<tr>
+										<th>奖品图片</th>
+										<th>奖品名</th>
+										<th>期数</th>
+										<th>奖券数</th>
+										<th>中奖概率</th>
+										<th>当前状态</th>
+									</tr>
+									<?php foreach($myPrizeNoList as $myPrize): ?>
+										<?php $prize = $myPrize['prize_details']; ?>
+										<?php foreach($myPrize['lottery_actions'] as $issue_num => $issues): ?>
+											<?php $issueSum = count($issues); ?>
+											<?php $rate = $issueSum / $prize['num']; ?>
+											<tr>
+												<td><img src="<?php echo $prize['photo_url_s']; ?>" width="100" height="70" /></td>
+												<td><?php echo $prize['prizename']; ?></td>
+												<td><?php echo $issue_num; ?></td>
+												<td><?php echo $issueSum; ?></td>
+												<td><?php echo $rate*1000; ?> / 1000</td>
+												<td>
+													<?php if($issues[0]['issue_result'] == CI_prize::ISSUE_PENDING): ?>
+														<?php if($prize['num_now'] >= $prize['num']): ?>
+															<span>等待开奖...</span>
+														<?php else: ?>
+															<a class="btn_cj" dataid="<?php echo $prize['id_prize']; ?>" href="javascript: {};">继续抽奖</a>
+														<?php endif; ?>
+													<?php else: ?>
+														<?php $win = false; ?>
+														<?php foreach($issues as $issue_details): ?>
+															<?php if($issue_details['action_code'] == $issue_details['issue_result']): ?>
+																<?php $win = true; ?>
+															<?php endif; ?>
+														<?php endforeach; ?>
+														
+														<?php if($win): ?>
+															<span style="color: #F00;">恭喜中奖（中奖号码：<?php echo $issues[0]['issue_result']; ?>）</span>
+														<?php else: ?>
+															<span style="color: #CCC;">再接再厉</span>
+														<?php endif; ?>
+													<?php endif; ?>
+												</td>
+											</tr>
+										<?php endforeach; ?>
 									<?php endforeach; ?>
-								</ul>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -113,6 +110,16 @@
 			});
 			$(list).width(width);
 		});
+	});
+
+	$(".btn_cj").bind("click",function(){
+	    var id=$(this).attr("dataid"); 
+		$.post("/prize",{id:id},function(result){		
+			 $('.mydiv',$("#closen")[0]).html(result);
+			 $("#closen").show();
+		    //$("span").html(result);
+		  });
+
 	});
 </script>
 </html>

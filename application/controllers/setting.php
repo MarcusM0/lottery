@@ -31,7 +31,7 @@ class setting extends CI_Controller {
 		$user=$this->cache->get_user();
 		$myPrizeNoList = $this->prize->getPrizeNoList(' created_time DESC ', null, array(
 			'userid' => $user['id']
-		), true);
+		), true);	fdump($myPrizeNoList);
 		
 		$this->load->view ('setting/myprize', array(
 			'user' => $user,

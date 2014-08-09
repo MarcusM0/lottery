@@ -171,7 +171,7 @@ class CI_prize {
 	
 	function getPrizeNoList($sort,$limit,$parameter, $mergeSamePrize = false){
 		$sql= "
-		SELECT  p.name prizename, p.photo_url_s, 
+		SELECT  p.name prizename, p.photo_url_s, p.num, p.num_now, 
 				ula.*, 
 				u.nick_name username, 
 				li.issue_result, li.issue_num, li.id_prize
@@ -199,8 +199,24 @@ class CI_prize {
 		$list = $rs->result_array ();
 		if($mergeSamePrize && !empty($list)){
 			$listMerged = array();
-			foreach($list as $item){fdump($item);
-				$listMerged[$item['id_prize']][] = $item;
+			foreach($list as $item){
+				$listMerged[$item['id_prize']]['prize_details'] = array(
+					'prizename' => $item['prizename'],
+					'photo_url_s' => $item['photo_url_s'],
+					'id_prize' => $item['id_prize'],
+					'num' => $item['num'],
+					'num_now' => $item['num_now'],
+					'username' => $item['username'],
+				);
+				$listMerged[$item['id_prize']]['lottery_actions'][$item['issue_num']][] = array(
+					'id_user_lottery_actioin' => $item['id_user_lottery_actioin'],
+					'id_user' => $item['id_user'],
+					'action_code' => $item['action_code'],
+					'id_lottery_issue' => $item['id_lottery_issue'],
+					'created_time' => $item['created_time'],
+					'issue_result' => $item['issue_result'],
+					'issue_num' => $item['issue_num'],
+				);
 			}
 			return $listMerged;
 		}
