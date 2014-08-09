@@ -17,9 +17,7 @@
 	margin-left:40px;
     color:red;
 }
-
-.yzm .error{
-	
+.yzm .error{	
 	margin-left:0px;
 }
 </style>
@@ -38,6 +36,7 @@
     </li>
     <li class="login loginfont" >昵  称：<input value="" placeholder="昵 称" id="nick_name" name="nick_name"  /></li>
     <li class="login loginfont">邮  箱：<input value="" placeholder="邮 箱" id="email" name="email" /></li>
+    <li class="login loginfont">手  机：<input value="" placeholder="手 机" id="mobile" name="mobile" /></li>
     <li class="login loginfont">密  码：<input value="" type="password"  placeholder="密 码"  id="password" name="password"  /></li>
     <li class="yzm loginfont">
     <span style="float:left;margin-right:5px;"><img id="chgimg" src="src/code/code_num.php" width="100" height="44" /></span>

@@ -25,29 +25,37 @@ class lottery extends CI_Controller {
 		   $user=$this->cache->get_user();	
            $jsonString=$this->input->post("jsonString");
            $prizecode=$this->input->post("code");
-           $obj = json_decode($jsonString);
+           $input = json_decode($jsonString);           
 		   $v=$this->cache->get_verify();
-		   $v_array=explode("|",$v);      
-		   $taskId=$v_array[0];  
-		   $result=$v_array[1]; 
+           $obj = json_decode($v);
 		   $return=array();
 		   $rs=false;
            $msg="验证不通过!";   
            $code=-1;   
            $task_html="";	   
            $task_title="";
+                      
            foreach ($obj as $item) {
-           	 if($item->taskID==$taskId&&$item->result==$result){
-         	 	$rs=true;
-           	 }
+           	  if($item->taskType=='2'){
+           	  	    $taskId=$item->taskID;
+	           	    foreach ($input as $o) {
+	                	if($item->taskID==$o->taskID){
+	                		if($item->result==$o->result){
+	                				$rs=true;
+	                		}
+	                	}
+	                }          	  	
+           	  }
            }
-            if($rs==true){
+           
+           
+           if($rs==true){
 			       foreach ($obj as $item) {
-			         if($item->taskID==$taskId){
-		                $item->taskType="2";
-		           	 }else{
-		           	    $item->taskType="1";
-		           	 }        
+			       	  foreach ($input as $o) {
+				         if($item->taskID==$o->taskID){
+			                $item->result=$o->result;
+			           	 }		       	  	 
+			       	  }
 		           }        
 		           $jsonString = json_encode($obj);
                    //$this->prize->taskSubmit($jsonString);           	
