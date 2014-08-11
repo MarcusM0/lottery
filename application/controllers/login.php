@@ -22,7 +22,7 @@ class login extends CI_Controller {
 	
 	public function dologin() {
 	    	$email=$this->input->post('email');	
-	    	$password=$this->input->post('password');	    	
+	    	$password=$this->input->post('password');
 	    	$result=$this->user->doLogin($email,md5($password));
 			$placehtml = json_encode ( array('code'=>$result,'url'=>site_url("index")));	
 			 echo   $placehtml;	

@@ -68,7 +68,7 @@ class CI_prize {
 	
 	function getToRunLotteryPrizes()
 	{
-		$sql = " SELECT * FROM prize WHERE num_now >= num "; 
+		$sql = " SELECT * FROM prize WHERE num_now >= num AND status = '" . CI_prize::PRIZE_STATUS_ACTIVE . "' "; 
 		$result = $this->CI->db->query($sql);
 		
 		return $result->result_array();
@@ -89,6 +89,21 @@ class CI_prize {
 		
 		$sql = " INSERT INTO lottery_issue SET id_prize = {$id_prize}, issue_num = {$newmaxIssueNum}, issue_result = '".self::ISSUE_PENDING."' ";
 		return $this->CI->db->query($sql);  
+	}
+	
+	public function getLotteryIssueWinner($id_lottery_issue)
+	{
+		$sql = "
+			SELECT u.* 
+			FROM user_lottery_action ula 
+			LEFT JOIN user u ON ula.id_user = u.id 
+			LEFT JOIN lottery_issue li ON ula.id_lottery_issue = li.id_lottery_issue 
+			WHERE 
+				ula.action_code = li.issue_result AND 
+				li.id_lottery_issue = '{$id_lottery_issue}'
+		";
+		
+		return $this->CI->db->query($sql)->row_array();
 	}
 	
 	function getCurrentLotteryIssueOfPrize($id_prize, $createIfNull = false)
@@ -112,6 +127,8 @@ class CI_prize {
 		return $this->CI->db->query($sql); 
 	}
 	
+	const PRIZE_STATUS_ACTIVE = 1;
+	const PRIZE_STATUS_INACTIVE = 2;
 	function getPrizeNo($id){
 		    $result=array();		
 		    $user=$this->CI->cache->get_user();
@@ -145,7 +162,7 @@ class CI_prize {
 	            	'created_time' => $now
 	            ));  
 	            if($num==$total){
-	        	    $sql= "update prize set status= 2 where id=".$id;
+	        	    $sql= "update prize set status= " . self::PRIZE_STATUS_INACTIVE . " where id=".$id;
 	 		        $rs = $this->CI->db->query ( $sql);  	            	
 	            }
 	            $this->CI->db->trans_complete(); 	
@@ -269,9 +286,6 @@ class CI_prize {
 		}
         return  $num;
 	}		
-		
-	
-	
 	
 	function getPrizeById($id){
 		$object=null;
@@ -284,6 +298,32 @@ class CI_prize {
         return  $object;
 	}		
 	
+	const LOTTERY_NUM_TOTAL = 8;
+	function generateLotteryNum()
+	{
+		$lotteryNum = '';
+		
+		$sql = " SELECT * FROM lottery_num_code ORDER BY num_seq ASC LIMIT " . self::LOTTERY_NUM_TOTAL;
+		$numCodes = $this->CI->db->query($sql)->result_array();
+		foreach($numCodes as $numCode){
+			$num_value = str_replace('.', '', $numCode['num_value']);
+			$lotteryNum .= substr($num_value, ($numCode['num_position'] * -1), 1);
+		}
+		
+		$lotteryNum = str_pad($lotteryNum, self::LOTTERY_NUM_TOTAL, 0, STR_PAD_RIGHT);
+		
+		return $lotteryNum;
+	}
+	
+	public function addLotteryWinnerLog($id_user, $id_prize, $issue_num, $issue_result, $created_date = null)
+	{
+		if($created_date === null){
+			$created_date = date('Y-m-d H:i:s');
+		}
+		$sql = " INSERT INTO lottery_winner_log(`id_user`, `id_prize`, `issue_num`, `issue_result`, `created_date`) VALUES('{$id_user}', '{$id_prize}', '{$issue_num}', '{$issue_result}', '{$created_date}') ";
+		
+		return $this->CI->db->query($sql);
+	}
 }
 
 

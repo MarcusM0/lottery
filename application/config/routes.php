@@ -41,6 +41,9 @@
 $route['default_controller'] = "index";
 $route['404_override'] = 'p404';
 
+$route['fetch_lottery_num'] = 'index/fetch_lottery_num';
+$route['generate_lottery_num'] = 'index/generateLotteryNum';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
