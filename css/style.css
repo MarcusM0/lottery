@@ -296,13 +296,20 @@ li.lq{text-align:right; padding-left:320px; margin-top:-10px;}
 table.myprizes {
 	width: 95%;
 	text-align: center;
+	font-size: 13px;
 }
 
 table.myprizes td {
 	border-right: 1px solid #C1DAD7;
 	border-bottom: 1px solid #C1DAD7;
-	padding: 6px 6px 6px 12px;
+	padding: 3px 3px 3px 6px;
 	color: #4f6b72;
+}
+
+table.myprizes td img {
+	margin: 0 auto;	
+	width: 100%;
+	height: 70px;
 }
 
 table.myprizes tr:hover {
