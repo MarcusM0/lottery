@@ -21,11 +21,6 @@
 	<div class="wrap">
 		<div class="wrap_bg">
 			<div class="frame_content">
-				<div class="path">
-					<a href="<?php echo site_url()?>" target="_blank">个人中心</a>
-					&gt; <b>我的奖券</b>
-				</div>
-				
 				<div class="layout clearfix"><!--right-->
 					<div class="layout_right">
 						<div class="m_address_admin">
@@ -37,54 +32,64 @@
 								</div>
 							</div>
 							
-							<div class="clearfix" style="margin-top: -30px;">
-								<table class="myprizes">
+							<table class="myprizes" style="margin-top: -30px;">
+								<tr>
+									<th>奖品图片</th>
+									<th>奖品名称</th>
+									<th>期数</th>
+									<th>您获得的奖券数</th>
+									<th>开奖结果</th>
+								</tr>
+								<?php foreach($myPrizeNoList as $myPrize): ?>
+									<?php $prize = $myPrize['prize_details']; ?>
+									<?php 
+										$issue = $myPrize['lottery_actions'][0];
+										$issue_num = $issue['issue_num'];
+										$issueSum = count($myPrize['lottery_actions']); 
+									?>
+									<?php $rate = $issueSum / $prize['num']; ?>
 									<tr>
-										<th>奖品图片</th>
-										<th>奖品名</th>
-										<th>期数</th>
-										<th>奖券数</th>
-										<th>中奖概率</th>
-										<th>当前状态</th>
-									</tr>
-									<?php foreach($myPrizeNoList as $myPrize): ?>
-										<?php $prize = $myPrize['prize_details']; ?>
-										<?php foreach($myPrize['lottery_actions'] as $issue_num => $issues): ?>
-											<?php $issueSum = count($issues); ?>
-											<?php $rate = $issueSum / $prize['num']; ?>
-											<tr>
-												<td><img src="<?php echo $prize['photo_url_s']; ?>" width="100" height="70" /></td>
-												<td><?php echo $prize['prizename']; ?></td>
-												<td><?php echo $issue_num; ?></td>
-												<td><?php echo $issueSum; ?></td>
-												<td><?php echo $rate*1000; ?> / 1000</td>
-												<td>
-													<?php if($issues[0]['issue_result'] == CI_prize::ISSUE_PENDING): ?>
-														<?php if($prize['num_now'] >= $prize['num']): ?>
-															<span>等待开奖...</span>
-														<?php else: ?>
-															<a class="btn_cj" dataid="<?php echo $prize['id_prize']; ?>" href="javascript: {};">继续抽奖</a>
-														<?php endif; ?>
-													<?php else: ?>
-														<?php $win = false; ?>
-														<?php foreach($issues as $issue_details): ?>
-															<?php if($issue_details['action_code'] == $issue_details['issue_result']): ?>
-																<?php $win = true; ?>
-															<?php endif; ?>
-														<?php endforeach; ?>
-														
-														<?php if($win): ?>
-															<span style="color: #F00;">恭喜中奖（中奖号码：<?php echo $issues[0]['issue_result']; ?>）</span>
-														<?php else: ?>
-															<span style="color: #CCC;">再接再厉</span>
-														<?php endif; ?>
+										<td><img src="<?php echo $prize['photo_url_s']; ?>" width="100" height="70" /></td>
+										<td><?php echo $prize['prizename']; ?></td>
+										<td>第<?php echo $issue_num; ?>期</td>
+										<td>
+											<?php echo $issueSum; ?>张(<?php echo $rate*1000; ?>‰)
+										</td>
+										<td>
+											<?php if($issue['issue_result'] == CI_prize::ISSUE_PENDING): ?>
+												<?php if($prize['num_now'] >= $prize['num']): ?>
+													<span>等待开奖...</span>
+												<?php else: ?>
+													<a class="btn_cj" dataid="<?php echo $prize['id_prize']; ?>" href="javascript: {};">获得更多奖券</a>
+												<?php endif; ?>
+											<?php else: ?>
+												<?php $win = false; ?>
+												<?php foreach($myPrize['lottery_actions'] as $issue_details): ?>
+													<?php if($issue_details['action_code'] == $issue_details['issue_result']): ?>
+														<?php $win = true; break; ?>
 													<?php endif; ?>
-												</td>
-											</tr>
-										<?php endforeach; ?>
-									<?php endforeach; ?>
-								</table>
-							</div>
+												<?php endforeach; ?>
+												
+												<?php if($win): ?>
+													<span style="color: #F00;">
+														恭喜您中奖 <br />
+														您的奖券号码是：<?php echo str_pad($issue['issue_result'], 8, '0', STR_PAD_LEFT); ?>
+													</span>
+												<?php else: ?>
+													<span style="color: #CCC;">很遗憾，您未中奖，请再接再厉。</span>
+												<?php endif; ?>
+											<?php endif; ?>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</table>
+							
+							<?php $this->load->view('elements/paginations', array(
+								'baseUrl' => site_url('/setting/myprize'),
+								'pageSize' => $pageSize,
+								'currPage' => $currPage,
+								'recordSum' => $recordSum
+							)); ?>
 						</div>
 					</div>
 					

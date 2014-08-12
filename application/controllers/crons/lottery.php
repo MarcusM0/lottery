@@ -66,7 +66,7 @@ class Lottery extends CI_Controller {
 	protected function createPrizeLotteryResult($prize)
 	{
 		$lotteryNum = $this->prize->generateLotteryNum();
-		$result = substr($lotteryNum, (strlen($prize['num']) * -1));
+		$result = substr($lotteryNum, (strlen($prize['num'] - 1) * -1));
 		
 		return $result;
 	}

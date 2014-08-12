@@ -179,14 +179,8 @@ class CI_prize {
 		    }   
             return  $result;
 	}	
-		
 	
-	
-	
-	
-	
-	
-	function getPrizeNoList($sort,$limit,$parameter, $mergeSamePrize = false){
+	function getPrizeNoList($sort, $parameter){
 		$sql= "
 		SELECT  p.name prizename, p.photo_url_s, p.num, p.num_now, 
 				ula.*, 
@@ -199,7 +193,7 @@ class CI_prize {
 		";
 		
 		$conditions = array();
-		if(isset($parameter['userid'])&&$parameter['userid']){
+		if(isset($parameter['userid']) && $parameter['userid']){
 			$conditions[] = 'ula.id_user = "'. $parameter['userid'] .'"';
 		}
 		if(!empty($conditions)){
@@ -208,16 +202,15 @@ class CI_prize {
 		
 		if(isset($sort)&&$sort){
 			$sql=$sql.' order by  '.$sort;
-		}	
-		if(isset($limit)&&$limit){
-			$sql=$sql.' '.$limit;
 		}
 		$rs = $this->CI->db->query ( $sql);
 		$list = $rs->result_array ();
-		if($mergeSamePrize && !empty($list)){
+		if(!empty($list)){
+			$list = $this->sortPrizeListByIssueResult($list);
 			$listMerged = array();
 			foreach($list as $item){
-				$listMerged[$item['id_prize']]['prize_details'] = array(
+				$prizesIssuesKey = "{$item['id_prize']}_{$item['issue_num']}";
+				$listMerged[$prizesIssuesKey]['prize_details'] = array(
 					'prizename' => $item['prizename'],
 					'photo_url_s' => $item['photo_url_s'],
 					'id_prize' => $item['id_prize'],
@@ -225,7 +218,7 @@ class CI_prize {
 					'num_now' => $item['num_now'],
 					'username' => $item['username'],
 				);
-				$listMerged[$item['id_prize']]['lottery_actions'][$item['issue_num']][] = array(
+				$listMerged[$prizesIssuesKey]['lottery_actions'][] = array(
 					'id_user_lottery_actioin' => $item['id_user_lottery_actioin'],
 					'id_user' => $item['id_user'],
 					'action_code' => $item['action_code'],
@@ -235,10 +228,33 @@ class CI_prize {
 					'issue_num' => $item['issue_num'],
 				);
 			}
-			return $listMerged;
+			$list = $listMerged;
 		}
+		
         return  $list;
-	}	
+	}
+	
+	protected function sortPrizeListByIssueResult($list)
+	{
+		$sortedList = array(
+			'win' => array(),
+			'pending' => array(),
+			'lose' => array()
+		);
+		foreach($list as $item){
+			if($item['issue_result'] == self::ISSUE_PENDING){
+				$sortedList['pending'][] = $item;
+			}else{
+				if($item['issue_result'] == $item['action_code']){
+					$sortedList['win'][] = $item;
+				}else{
+					$sortedList['lose'][] = $item;
+				}
+			}
+		}
+		
+		return array_merge($sortedList['win'], $sortedList['pending'], $sortedList['lose']);
+	}
 		
 	function getPrizeNoCount($parameter){
 		$sql= "SELECT a.* FROM prizenolog a, prize b ,user c WHERE a.prizecode=b.id AND a.userid=c.id";

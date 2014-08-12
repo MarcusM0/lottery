@@ -48,7 +48,7 @@ class lottery extends CI_Controller {
            	  }
            }
            
-           
+           $rs = true;
            if($rs==true){
 			       foreach ($obj as $item) {
 			       	  foreach ($input as $o) {
