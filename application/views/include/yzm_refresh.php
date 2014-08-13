@@ -2,8 +2,8 @@
 $images=$refresh->image;
 ?>
 
-<ul>
-    <li taskID="<?php $refresh->taskID?>" class="yzn5 ">      
+<ul class="inputul" taskID="<?php echo $refresh->taskID?>" >
+    <li taskID="<?php echo $refresh->taskID?>" class="<?php echo $xh?>">      
       <?php 
          foreach ($images as $image) {
          ?>   
@@ -11,7 +11,7 @@ $images=$refresh->image;
    <?php 
          }
       ?> 
-      <img src="/images/refresh.png" class="refresh_btn" style="margin-left:5px;float:left;"> 	
+       <a style="margin-left:5px;float:left;margin-top:40px;" class="refresh_btn"  > 	刷新</a>
     </li>    
     <li class="yzn3">     	
     <input placeholder="填写以上信息" id="result">         

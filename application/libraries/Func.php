@@ -14,7 +14,7 @@ class CI_func {
 	}
     function  getRdCard(){
 	    $randStr = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
-	    $rand = substr($randStr,0,6);	
+	    $rand = substr($randStr,0,12);	
 	    return $rand; 
 	}		
 	

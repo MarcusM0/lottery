@@ -5,8 +5,11 @@ $().ready(function() {
            var url=$("#formLogin").attr("url");
            var email=$("#email").val();
            var password=$("#password").val();
-
-           $.post(url,{email:email,password:password},function(result){
+           var remember=0;
+           if($("#remember").attr("checked")=="checked"){
+        	   remember=1;
+           }
+           $.post(url,{email:email,password:password,remember:remember},function(result){
         	   var result=eval("("+result+")");
         	   if(result.code==true){
         		   document.location.href=result.url;

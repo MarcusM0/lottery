@@ -51,7 +51,7 @@ $prize1=$this->prize->getPrizeBySort(1);
 ?>
 <div class="center">
  <div class="tsw">
- <div class="tswl"><img src="<?php echo $prize1['photo_url']?>" width="526" height="466" />
+ <div class="tswl"><img src="<?php echo $prize1['photo_url']?>" width="350" height="310" />
  <div class="cjn"></div>
  <div class="cjnn">
  <ul>
@@ -81,7 +81,7 @@ $prize2=$this->prize->getPrizeBySort(2);
 $prize3=$this->prize->getPrizeBySort(3);
 ?>
  <ul>
-     <li><img src="<?php echo $prize2['photo_url']?>" width="251" height="221" />
+     <li><img src="<?php echo $prize2['photo_url']?>" width="167" height="147" />
      <div class="tswf"></div>
      <div class="tswfn">
          <div class="tswfndiv"><span><?php echo $prize2['num_now']?></span>/<?php echo $prize2['num']?></div>
@@ -102,7 +102,7 @@ $prize3=$this->prize->getPrizeBySort(3);
      </div>
      </li>
      
-     <li><img src="<?php echo $prize3['photo_url']?>" width="251" height="221" />
+     <li><img src="<?php echo $prize3['photo_url']?>" width="167" height="147" />
      <div class="tswf"></div>
      <div class="tswfn">
          <div class="tswfndiv"><span><?php echo $prize3['num_now']?></span>/<?php echo $prize3['num']?></div>
@@ -127,7 +127,7 @@ $prize3=$this->prize->getPrizeBySort(3);
   <?php 
 $prize4=$this->prize->getPrizeBySort(4);
 ?>
- <div class="tswr"><img src="<?php echo $prize4['photo_url']?>" width="251" height="466" />
+ <div class="tswr"><img src="<?php echo $prize4['photo_url']?>" width="167" height="310" />
      <div class="tswf"></div>
      <div class="tswfn">
          <div class="tswfndiv"><span><?php echo $prize4['num_now']?></span>/<?php echo $prize4['num']?></div>
@@ -156,7 +156,7 @@ $prize7=$this->prize->getPrizeBySort(7);
 ?>
  <div class="xtp">
   <ul>
-     <li><img src="<?php echo $prize5['photo_url']?>" width="251" height="221" />
+     <li><img src="<?php echo $prize5['photo_url']?>" width="167" height="147" />
      <div class="tswf"></div>
      <div class="tswfn">
          <div class="tswfndiv"><span><?php echo $prize5['num_now']?></span>/<?php echo $prize5['num']?></div>
@@ -176,7 +176,7 @@ $prize7=$this->prize->getPrizeBySort(7);
          </div>
      </div> 
      </li>
-     <li><img src="<?php echo $prize6['photo_url']?>" width="251" height="221" />
+     <li><img src="<?php echo $prize6['photo_url']?>" width="167" height="147" />
      <div class="tswf"></div>
      <div class="tswfn">
          <div class="tswfndiv"><span><?php echo $prize6['num_now']?></span>/<?php echo $prize6['num']?></div>
@@ -196,9 +196,9 @@ $prize7=$this->prize->getPrizeBySort(7);
          </div>
      </div> 
      </li>
-     <li class="xtplr"><img src="<?php echo $prize7['photo_url']?>" width="526" height="221" />
-     <div class="tswf" style="width:526px;"></div>
-     <div class="tswfn" style="width:526px;">
+     <li class="xtplr"><img src="<?php echo $prize7['photo_url']?>" width="348" height="147" />
+     <div class="tswf" style="width:350px;"></div>
+     <div class="tswfn" style="width:350px;">
          <div class="tswfndiv"><span><?php echo $prize7['num_now']?></span>/<?php echo $prize7['num']?></div>
          <div class="cjdt">
          <?php 
@@ -221,7 +221,7 @@ $prize7=$this->prize->getPrizeBySort(7);
  <div class="clear"></div>
 </div>
 
-<div class="ad"><img src="images/gg.jpg" width="1080" height="145"/></div>
+<div class="ad"><img src="images/gg.jpg" width="720" height="96"/></div>
 
 <?php
 		 $this->load->view('include/footer',array());

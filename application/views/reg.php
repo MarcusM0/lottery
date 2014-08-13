@@ -32,21 +32,22 @@
    
         <div style="float:left"> 3秒完成注册</div>
  
-        <div style="float:right;padding-right:20px;"><a href="<?php echo site_url("index")?>"><img src="/images/logo_bottom.png"/></a></div>    
+<!--        <div style="float:right;padding-right:20px;"><a href="<?php echo site_url("index")?>"><img src="/images/logo_bottom.png"/></a></div>    -->
     </li>
     <li class="login loginfont" >昵  称：<input value="" placeholder="昵 称" id="nick_name" name="nick_name"  /></li>
     <li class="login loginfont">邮  箱：<input value="" placeholder="邮 箱" id="email" name="email" /></li>
     <li class="login loginfont">手  机：<input value="" placeholder="手 机" id="mobile" name="mobile" /></li>
     <li class="login loginfont">密  码：<input value="" type="password"  placeholder="密 码"  id="password" name="password"  /></li>
-    <li class="yzm loginfont">
+    <li class="yzm loginfont" style="height:10px;">
     <span style="float:left;margin-right:5px;"><img id="chgimg" src="src/code/code_num.php" width="100" height="44" /></span>
-
     <input value="" placeholder="验证码"  id="code" name="code" />
-     
     </li>
-    <li class="miz" style="padding-right:20px;"><div style="margin-left:30px;float:left"><a href="<?php echo site_url("agree")?>" target="_blank">使用协议</a></div>   已有账号请<a href="<?php echo site_url("login")?>">登录</a></li>
-    <li class="submit">
+
+    <li class="submit loginfont">
+    <a style="float:left;color:black" href="<?php echo site_url("agree")?>" target="_blank">使用协议</a>   <a style="float:right;padding-right:20px;;color:black" href="<?php echo site_url("login")?>">已有账号?登录</a>
     <input type="submit" id="submit" value="立即注册">
+
+    <input type="button" style="margin-top:10px;" id="submit" onclick="location.href='<?php echo site_url()?>'" value="返回">        
     </li>
 </ul>
 </div>

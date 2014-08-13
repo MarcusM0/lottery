@@ -778,7 +778,7 @@
 .layout {
 	border: 1px solid #d2d4d4;
 	border-top: 0;
-	width: 1046px;
+	width: 710px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 	background:  #fcffff
 }
@@ -789,9 +789,10 @@
 }
 
 .layout_left {
+	margin-left:5px;
 	margin-top:10px;
 	background:#fff;
-	width: 240px;
+	width: 130px;
 	float: left;
 	padding: 0 0 20px
 }
@@ -809,7 +810,7 @@
 }
 
 .layout_right {
-	width: 778px;
+	width: 518px;
 	float: right
 }
 
@@ -3910,7 +3911,7 @@
 
 .per_menu {
 
-	width: 240px;
+	width: 130px;
 	background: #fff;
 	border-radius: 3px
 }
@@ -4226,7 +4227,7 @@
 .m_address_admin {
 
 	border: 0px solid #d2d4d4;
-	width: 780px;
+	width: 520px;
 	padding: 0 0 80px;
 	min-height: 500px
 }
@@ -4234,7 +4235,7 @@
 .m_address_admin .tt {
 	padding: 27px 27px 7px 27px;
 	position: relative;
-	width: 708px
+	width: 500px
 }
 
 .m_address_admin .tt .ico_address {

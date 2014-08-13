@@ -53,7 +53,7 @@ $autoload['packages'] = array();
 */
 
 //$autoload['libraries'] = array('database', 'session');
-$autoload['libraries'] = array( 'session','database','func','method','split','user','cache','email','prize','thirdpart');
+$autoload['libraries'] = array('session','database','func','method','split','user','cache','email','prize','thirdpart');
 
 /*
 | -------------------------------------------------------------------
@@ -64,7 +64,7 @@ $autoload['libraries'] = array( 'session','database','func','method','split','us
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('url','cookie');
 
 
 /*

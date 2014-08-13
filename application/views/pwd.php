@@ -32,21 +32,29 @@
    
         <div style="float:left"> 找回密码</div>
  
-        <div style="float:right;padding-right:20px;"><a href="<?php echo site_url("index")?>"><img src="/images/logo_bottom.png"/></a></div>    
+<!--        <div style="float:right;padding-right:20px;"><a href="<?php echo site_url("index")?>"><img src="/images/logo_bottom.png"/></a></div>    -->
     </li>
     <li class="login loginfont">邮  箱：<input value="" placeholder="邮 箱" id="email" name="email" /></li>
 
-    <li class="miz" style="padding-right:20px;">想起密码了<a href="<?php echo site_url("login")?>">登录</a></li>
+    <li class="miz loginfont" style="padding-right:20px;">想起密码了<a href="<?php echo site_url("login")?>">登录</a></li>
     
 
   
     <li class="submit">
     <input type="submit" id="submit" value="取回密码">
+     <input type="button" style="margin-top:10px;" id="submit" onclick="location.href='<?php echo site_url()?>'" value="返回">        
+    
     </li>
     <li class="submit" style="padding-top:50px;">
-      <label style="font-weight:bold;color:red;" id="msg"> </label>   
-
+    
     </li>
+
+    <li class="miz loginfont" style="">
+  <label style="float:left;height:10px;margin-top:10px;padding-left:30px;font-weight:bold;color:red;" id="msg"></label>   
+
+    
+    </li>
+    
 
 
 </ul>
