@@ -1,0 +1,432 @@
+body,button,input,select,textarea {
+	font: 12px/ 1.125 Arial, Helvetica, sans-serif;
+	_font-family: "SimSun";
+}
+
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr
+	{
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+li {
+	list-style: none;
+}
+
+fieldset,img {
+	border: 0;
+}
+
+q:before,q:after {
+	content: '';
+}
+
+a:focus,input,textarea {
+	outline-style: none;
+}
+
+input[type="text"],input[type="password"],textarea {
+	outline-style: none;
+	-webkit-appearance: none;
+}
+
+textarea {
+	resize: none
+}
+
+address,caption,cite,code,dfn,em,i,th,var,b {
+	font-style: normal;
+	font-weight: normal;
+}
+
+abbr,acronym {
+	border: 0;
+	font-variant: normal;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#js_homestyle_css_module_base_reset {
+	height: 42px;
+}
+
+#js_style_css_module_base_reset {
+	height: 42px;
+}
+
+a {
+	color: #0a8cd2;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+.clearfix {
+	display: block;
+}
+
+.clear {
+	clear: both;
+	height: 0;
+	font: 0/ 0 Arial;
+	visibility: hidden;
+}
+
+.CH {
+	font-family: "SimSun"
+}
+
+.W_Yahei {
+	font-family: "Microsoft Yahei"
+}
+
+.W_Tahoma {
+	font-family: Tahoma
+}
+
+.W_fs {
+	font-size: 10px;
+	-webkit-transform: scale(0.875)
+}
+
+.W_fb {
+	font-weight: 700;
+}
+
+.W_f14 {
+	font-size: 14px
+}
+
+.W_f16 {
+	font-size: 16px
+}
+
+.W_f18 {
+	font-size: 18px
+}
+
+.W_f20 {
+	font-size: 20px
+}
+
+.W_fl {
+	float: left;
+	_display: inline
+}
+
+.W_fr {
+	float: right;
+	_display: inline
+}
+
+.W_tc {
+	text-align: center;
+}
+
+.W_tr {
+	text-align: right;
+}
+
+.W_input,.W_inputStp {
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	height: 28px;
+	padding: 0 0 0 2px;
+	vertical-align: middle;
+	color: #808080;
+	-webkit-box-shadow: 0px 1px 1px 0px #eaeaea inset;
+	-moz-box-shadow: 0px 1px 1px 0px #eaeaea inset;
+	box-shadow: 0px 1px 1px 0px #eaeaea inset;
+	height: 20px\9;
+	padding: 8px 0 0 2px\9;
+}
+
+textarea.W_input {
+	overflow-y: auto;
+	overflow-x: hidden;
+	line-height: 18px;
+	height: 23px;
+	padding: 5px 0 0 2px;
+}
+
+:root .W_input,:root .W_inputStp {
+	height: 26px\0;
+	padding: 2px 0 0 2px\0;
+}
+
+:root textarea.W_input {
+	height: 23px\0;
+	padding: 5px 0 0 2px\0;
+}
+
+.W_input_focus,.W_input:focus,.W_inputStp:focus {
+	border-color: #FFB941 !important;
+	-webkit-box-shadow: 1px 1px 1px 0px #ddd inset;
+	-moz-box-shadow: 1px 1px 1px 0px #ddd inset;
+	box-shadow: 1px 1px 1px 0px #ddd inset;
+	color: #333;
+}
+
+.W_input_default {
+	color: #b8b7b7;
+}
+
+.W_checkbox,.W_radio {
+	vertical-align: -2px;
+	_vertical-align: -3px;
+	margin-right: 3px; *
+	margin-right: 0;
+}
+
+.W_checkbox:focus {
+	outline: 1px solid #ffb941;
+}
+
+.W_face_radius {
+	border-radius: 2px;
+}
+
+.W_miniblog { *
+	zoom: 1;
+	min-width: 980px;
+}
+
+.W_main {
+	margin: 0 auto;
+	width: 980px;
+}
+
+.W_main_l {
+	float: left;
+	width: 150px;
+	overflow: hidden;
+}
+
+.W_main_a {
+	float: left;
+	width: 830px;
+	overflow: hidden;
+}
+
+.W_main_c {
+	float: left;
+	width: 600px;
+	min-height: 800px;
+	overflow: hidden;
+}
+
+.W_main_r {
+	float: right;
+	width: 230px;
+	overflow: hidden;
+}
+
+.W_main_2r {
+	float: right;
+	width: 380px;
+}
+
+.W_arrow {
+	display: inline-block;
+	width: 7px;
+	height: 4px;
+	_height: 5px;
+	margin: 0 0 0 5px;
+	overflow: hidden;
+	vertical-align: middle;
+	font-size: 12px;
+	line-height: 12px;
+	line-height: 12px\0; *
+	line-height: 13px;
+}
+
+:root .W_arrow {
+	line-height: 13px\0;
+}
+
+@
+-moz-document url-prefix (){ .
+	W_arrow {line-height: 13px;
+}
+
+}
+.W_arrow em {
+	display: inline-block;
+	font-family: "SimSun";
+}
+
+.W_arrow .down {
+	margin: -7px 0 0 -2px; *
+	margin: -22px 0 0 -2px;
+	_margin: -21px 0 0 -2px;
+}
+
+.W_arrow .up {
+	margin: 0 0 0 -2px; *
+	margin: -15px 0 0 -2px;
+	_margin: -13px 0 0 -2px;
+}
+
+.W_arrow em {
+	display: inline-block;
+	font-family: "SimSun";
+	margin: -7px 0 0 -2px; *
+	margin: -22px 0 0 -2px;
+	_margin: -21px 0 0 -2px;
+}
+
+.W_arrow_turn .W_arrow em {
+	display: inline-block;
+	font-family: "SimSun";
+	margin: 0 0 0 -2px; *
+	margin: -15px 0 0 -2px;
+	_margin: -13px 0 0 -2px;
+}
+
+.addicon {
+	font: bold 16px Arial;
+	height: 16px;
+	text-decoration: none;
+	color: #FFA00A;
+}
+
+.W_add:hover {
+	text-decoration: none;
+	_text-decoration: underline;
+}
+
+.W_add:hover .txt {
+	text-decoration: underline;
+}
+
+a.W_gotop {
+	position: fixed;
+	_position: absolute;
+	bottom: 100px;
+	left: 50%;
+	margin-left: 490px;
+	display: block;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 2px;
+	width: 22px;
+	height: 85px;
+	line-height: 12px;
+	text-align: center;
+	text-decoration: none;
+}
+
+a.W_gotop span {
+	display: block;
+	border-style: solid;
+	border-width: 1px;
+	height: 73px;
+	padding-top: 10px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a.W_gotop em,a.W_gotop:hover em {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a.W_gotop .icon_gotop {
+	margin-bottom: 5px;
+}
+
+a.W_arrowB {
+	display: block;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 2px;
+	width: 22px;
+	overflow: hidden;
+	line-height: 12px;
+	text-align: center;
+	text-decoration: none;
+}
+
+a.W_arrowB span {
+	display: block;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px 0;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a.W_arrowB em {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a.W_arrowB .W_ico12 {
+	margin-bottom: 10px;
+	_margin-bottom: 5px;
+}
+
+.W_new {
+	width: 4px;
+	height: 4px;
+	display: inline-block;
+	border: 2px solid #fff;
+	border-radius: 4px;
+	background: #e43e3e;
+	box-shadow: 0px 0px 2px 1px rgba(100, 100, 100, 0.5);
+	overflow: hidden
+}
+
+.W_new_count {
+	display: inline-block;
+	padding: 0 2px;
+	font-family: arial;
+	font-size: 10px;
+	-webkit-transform: scale(0.875);
+	background-color: #dd3838;
+	color: #fff;
+	border-radius: 2px;
+	min-width: 11px;
+	_width: 11px;
+	height: 12px;
+	line-height: 12px;
+	text-align: center;
+}
+
+fieldset {
+	display: block;
+	padding: 0 0 0 20px;
+	border-style: solid;
+	border-width: 1px 0 0 0;
+}
+
+fieldset legend {
+	padding: 0 5px;
+	font-weight: bold;
+}
+

@@ -1,0 +1,451 @@
+
+
+:root .W_outFrame .W_arrow {
+	line-height: 13px\0;
+}
+
+@
+-moz-document url-prefix (){ .
+	W_outFrame .W_arrow{line-height: 13px;
+}
+
+}
+
+
+#js_homestyle_css_module_base_W_outFrame {
+	height: 42px;
+}
+
+#js_style_css_module_base_W_outFrame {
+	height: 42px;
+}
+
+
+
+
+
+
+.B_register .W_nologin_main .W_reg_form {
+	float: left;
+	width: 600px;
+	margin: 30px 0 0 30px;
+	_display: inline;
+}
+
+.B_register .W_nologin_main .W_reg_form .tit {
+	width: 160px;
+}
+
+.B_register .W_nologin_main .W_reg_form .inp {
+	margin-left: 160px;
+}
+
+.B_register .W_nologin_main .W_reg_form .tips { *
+	width: 215px;
+}
+
+.B_register .W_nologin_main .W_reg_form .info_birthday .tips {
+	line-height: 19px;
+}
+
+.B_register .W_nologin_main .W_reg_form .tips_info .inp {
+	width: 200px;
+}
+
+.B_register .invite_register {
+	width: 900px;
+	margin: 5px auto 8px;
+}
+
+.B_register .bind_account .W_login_form {
+	margin-bottom: 155px;
+	padding-left: 160px;
+}
+
+.B_register .bind_account .W_reg_sidebar .p1 {
+	margin-bottom: 10px;
+}
+
+.B_register .bind_account .username {
+	_height: 30px;
+}
+
+.B_register .bind_account .password .W_input,.B_register .bind_account .username .W_input
+	{
+	width: 165px;
+}
+
+.B_register .bind_account .bind_btn {
+	padding-top: 5px;
+}
+
+.B_register .bind_account .bind_btn .W_btn_big span {
+	width: 200px;
+	_width: 205px;
+}
+
+.B_register .main_radius_bg .W_reg_form {
+	margin: 29px 0 0 20px;
+	padding-bottom: 78px;
+}
+
+.B_register .main_radius_ebg .W_reg_form {
+	margin: 29px 0 0 20px;
+}
+
+.B_register .W_reg_form .verify_bar .verify_code_tip {
+	margin-left: 34px;
+	_margin-left: 25px;
+}
+
+
+.mobile_ico {
+	background-position: 0 -24px;
+}
+
+
+
+.B_fav_sel .nologo,.B_user .nologo {
+	height: 20px;
+}
+
+.B_user .W_reg_form .tit {
+	width: 85px;
+}
+
+.B_user .W_reg_form .inp {
+	float: left;
+}
+
+.B_user .W_reg_form .choose select { *
+	margin-top: 4px;
+}
+
+.B_user .W_reg_info_left {
+	padding-bottom: 110px;
+}
+
+.B_user .no_data_tips {
+	line-height: 18px;
+}
+
+.B_user .no_data_tips .icon_warnS,.B_user .no_data_tips .icon_errorS {
+	vertical-align: middle;
+}
+
+.B_user .pul_list_fansbig .pul_item .name {
+	height: 15px;
+	overflow: visible;
+}
+
+.B_user .pul_list_fansbig .pul_item .name span {
+	display: inline-block;
+	max-width: 50px;
+	_width: 44px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+
+
+.B_fav_sel .W_reg_info_left {
+	padding-bottom: 60px; *
+	position: relative;
+}
+
+.B_fav_sel .fav_tags_list {
+	width: 225px;
+	position: absolute;
+	top: 0;
+	right: -249px;
+}
+
+.B_fav_sel .fav_tags_list .W_btn_arrow {
+	margin: 0 5px 5px 0;
+	white-space: nowrap; *
+	float: left;
+}
+
+.B_fav_sel .rec_person {
+	padding: 96px 0 0 20px;
+}
+
+.B_fav_sel .rec_person .person_list {
+	height: 53px;
+	margin-bottom: 12px;
+	overflow: hidden;
+}
+
+.B_fav_sel .rec_person .person_list:hover {
+	background: none;
+	border: 1px solid transparent
+}
+
+.B_fav_sel .rec_feed_list {
+	height: 491px;
+	overflow-y: scroll;
+	border-top: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.B_fav_sel .rec_feed {
+	_width: 201px;
+	_overflow: hidden;
+	padding: 15px 20px 15px 27px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.B_fav_sel .rec_feed .feed_cont .S_txt3 {
+	line-height: 18px;
+	word-break: break-all;
+}
+
+.B_fav_sel .fav_tags_sel {
+	_position: relative;
+}
+
+.B_fav_sel .select_fav {
+	padding-left: 28px;
+	position: relative;
+	_width: 602px;
+	margin-top: 27px;
+}
+
+.B_fav_sel .select_fav_tips {
+	margin: 0 0 18px;
+}
+
+.B_fav_sel .select_fav_tips .S_txt3 {
+	margin-left: 8px;
+}
+
+.B_fav_sel .see_more {
+	display: block;
+	border: 1px solid #d9d9d9;
+	line-height: 30px;
+	box-shadow: 0 2px 3px #f5f5f5;
+	cursor: pointer;
+}
+
+.B_fav_sel .see_more:hover {
+	text-decoration: none;
+}
+
+.B_fav_sel .select_fav .btn {
+	margin: 2px 29px 0 0;
+}
+
+.B_fav_sel .select_cover .btn {
+	position: absolute;
+	width: 574px;
+	bottom: -24px;
+	left: 28px;;
+	z-index: 2;
+}
+
+
+.B_fav_sel .step_box {
+	padding-top: 20px;
+	background: #fff;
+}
+
+.B_fav_sel .W_reg_info_right .change {
+	height: 14px;
+	margin: 13px 30px 0 0;
+}
+
+.W_reg_info_left .info_name {
+	margin-left: 223px;
+	padding-top: 15px;
+}
+
+.W_reg_info_left .info_name .name {
+	padding-bottom: 6px;
+}
+
+.W_reg_info_right .change .btn {
+	float: right;
+	margin-top: 2px;
+}
+
+.W_reg_info_right .change .W_tips {
+	float: left;
+	margin-left: 20px;
+}
+
+
+.WB_auth .main_radius_bg .auth_banner {
+	padding-top: 6px;
+}
+
+.B_register .success_tips {
+	color: #ffa00a;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	padding: 40px 0 0;
+}
+
+.B_register .success_tips .icon_succB {
+	vertical-align: middle;
+}
+
+.B_register .fail_tips {
+	color: #333;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	padding: 40px 0 0;
+}
+
+.B_register .fail_tips .icon_delB {
+	vertical-align: middle;
+}
+
+
+
+.reg_feed_info {
+	width: 410px;
+	margin: 30px auto;
+	line-height: 22px;
+}
+
+.reg_feed_info .main {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.reg_feed_info .dot_list {
+	text-indent: -7px;
+	padding: 0 0 0 10px;
+}
+
+.reg_feed_info .dot_list .W_dot {
+	margin-right: 4px;
+	vertical-align: middle;
+}
+
+.reg_feed_info .btn_login {
+	text-align: center;
+	margin: 20px 0 0;
+}
+
+.main_activate {
+	padding: 55px 0 0 50px;
+	width: 600px;
+	margin: 0 auto;
+	color: #333;
+	position: relative;
+	zoom: 1;
+	line-height: 22px;
+}
+
+.main_activate a {
+	margin: 0 2px;
+}
+
+.main_activate .icon_rederrorB {
+	position: absolute;
+	left: 0;
+	top: 40px;
+}
+
+.main_activate_title,.main_activate_titleSmall {
+	font-weight: bold;
+}
+
+.main_activate_title {
+	font-size: 16px;
+	padding-bottom: 20px;
+}
+
+.main_activate_titleSmall {
+	font-size: 14px;
+	padding-bottom: 10px;
+}
+
+.main_activate_btn {
+	padding-top: 20px;
+}
+
+.main_activate .dot_list {
+	text-indent: -7px;
+	padding-left: 10px;
+}
+
+.main_activate .dot_list .W_dot {
+	margin-right: 4px;
+	vertical-align: middle;
+}
+
+.B_register .no_sina_area_tips {
+	padding: 0 0 10px 20px;
+	line-height: 20px;
+	color: #333;
+	width: ;
+	position: relative;
+	top: -25px;
+}
+
+.WB_auth .W_nologin_main {
+	padding: 2px 0 0 0;
+}
+
+.WB_auth .W_reg_info {
+	background-position: 630px 75px;
+}
+
+.WB_auth .W_nologin_main .W_reg_form {
+	margin-top: 20px;
+}
+
+.WB_auth .W_reg_sidebar {
+	margin-top: 98px;
+}
+
+.WB_auth .W_reg_form .auth_bar {
+	margin-bottom: 27px;
+}
+
+.WB_auth .auth_banner .W_tips.tips_warn {
+	margin: 0 auto;
+	width: 553px;
+}
+
+.B_reg_four.WB_auth .auth_banner .W_tips.tips_warn {
+	width: 313px;
+	margin: 0 auto;
+}
+
+.B_reg_four.WB_auth .W_reg_info {
+	background-position: 630px 82px;
+}
+
+.WB_auth .W_reg_con .auth_banner {
+	margin-top: 22px;
+}
+
+.WB_auth .W_reg_con .success_tips {
+	padding-top: 10px;
+}
+
+.private_cont {
+	padding: 40px 30px;
+}
+
+.private_cont .head_title {
+	padding-bottom: 20px;
+}
+
+.private_cont .para {
+	line-height: 20px;
+	padding-top: 10px;
+	word-break: break-all;
+}
+
+.private_cont .para_title {
+	padding: 20px 0 0;
+}
+
