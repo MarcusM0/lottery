@@ -36,8 +36,6 @@ class CI_user {
 					set_cookie("autoLogin",$rd,86500*30);
 			    	$this->CI->user->updateRd($uid,$rd);
 				}		    	
-	    					
-				
 				return true;
 			}else{
 				return false;			

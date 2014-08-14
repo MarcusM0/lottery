@@ -17,7 +17,11 @@ class CI_func {
 	    $rand = substr($randStr,0,12);	
 	    return $rand; 
 	}		
-	
+    function  getRdCardShort(){
+	    $randStr = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
+	    $rand = substr($randStr,0,6);	
+	    return $rand; 
+	}			
 	function mjz_format_time($time) {
 		if (empty ( $time )) {
 			return $time;
