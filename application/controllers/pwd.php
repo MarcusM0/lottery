@@ -16,7 +16,7 @@ class pwd extends CI_Controller {
 	
 	public function send() {
     	$email=$this->input->post('email');			    	
-    	$rd=$this->func->getRdCard();
+    	$rd=$this->func->getRdCardShort();
     	$this->email->send($email,"找回密码",'新密码:('.$rd.'),请妥善保管!<a href='.site_url('pwd/email/'.$this->func->urlsafe_b64encode($email).'/p/'.$rd).'>点击生效</a>');	    	  	
 		$this->load->view ( 'pwd',  array());
 	}

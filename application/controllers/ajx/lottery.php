@@ -30,8 +30,8 @@ class lottery extends CI_Controller {
 		   $v=$this->func->encrypt($sign,'D','lottery123');	   
            $obj = json_decode($v);
 		   $return=array();
-		   $rs=false;
-           $msg="验证不通过!";   
+		   $rs=true;
+           $msg="";   
            $code=-1;   
            $task_html="";	   
            $task_title="";                      
@@ -40,10 +40,9 @@ class lottery extends CI_Controller {
            	  	    $taskId=$item->taskID;
 	           	    foreach ($input as $o) {
 	                	if($item->taskID==$o->taskID){
-	                		if($item->result==$o->result){
-	                				$rs=true;
-	                		}else{
-	                			    $rs=false;
+	                		if($item->result!=$o->result){
+	                				$rs=false;
+	                				$msg="验证不通过!";  
 	                		}
 	                	}
 	                }          	  	
