@@ -39,15 +39,22 @@ class Lottery extends CI_Controller {
 			
 			$issueResult = $this->createPrizeLotteryResult($toRunPrize);
 			if($this->prize->setLotteryResult($currentIssue['id_lottery_issue'], $issueResult)){
-				$this->prize->resetPrizeNumNow($toRunPrize['id']);
+//				$this->prize->resetPrizeNumNow($toRunPrize['id']);
+
+				$winner = $this->prize->getLotteryIssueWinner($currentIssue['id_lottery_issue']);
+				if(!empty($winner)){
+					$this->prize->addLotteryWinnerLog($winner['id'], $toRunPrize['id'], $currentIssue['issue_num'], $issueResult);
+				}
 				
 				$this->gbLine('奖品【' . $toRunPrize['name'] . '】当前开奖期号: ' . $currentIssue['issue_num']);
 				$this->gbLine('开奖号码: ' . $issueResult);
 				
+				/*
 				$this->prize->createNewLotteryIssueOfPrize($toRunPrize['id']);
 				$newIssue = $this->prize->getCurrentLotteryIssueOfPrize($toRunPrize['id']);
 				$this->gbLine('奖品【' . $toRunPrize['name'] . '】已创建新活动，期号: ' . $newIssue['issue_num']);
 				$this->gbLine('请等待下次开奖...');
+				*/
 			}else{
 				$this->gbLine('开奖失败');
 			}
@@ -56,19 +63,15 @@ class Lottery extends CI_Controller {
 		}
 	}
 	
-	const BLOCK_LINE = '--------------------';
 	protected function createPrizeLotteryResult($prize)
 	{
-		// algorithm...
-		// ...
-		// ...
-		
-		//TODO dummy result, remove later
-		$result = $prize['num'] / 2;
+		$lotteryNum = $this->prize->generateLotteryNum();
+		$result = substr($lotteryNum, (strlen($prize['num'] - 1) * -1));
 		
 		return $result;
 	}
 	
+	const BLOCK_LINE = '--------------------';
 	protected function gbEcho($str = '')
 	{
 		echo iconv('utf-8', 'gbk', $str);
