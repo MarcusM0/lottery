@@ -1,5 +1,5 @@
 <?php
-error_reporting(0); 
+
 ?>
 <input type="hidden" id="code" value="<?php echo $id?>"/>
 <div class="yzn">
@@ -8,12 +8,12 @@ error_reporting(0);
     <li class="yzn1"><img src="images/yzm.png" /></li>
    <?php 
 $task_domain=$this->config->item('task_domain');
-$ff=$this->method->http_request($task_domain."/sunyardEngine/getTasks?enterTaskNum=2");
-if(!$ff){
-	echo "<b style='color:red;'>远程服务器请求异常!</b>";
-	exit;
-}
-//$ff='[{"result":"","OID":"1","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_9"},{"result":"","OID":"2","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_10"},{"result":"18924671673","OID":"3","taskType":"2","image":["http://localhost:88/imageWeb/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228_1.JPG"],"enterWay":"0","taskID":"PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_PA_155_1"}]';
+//$ff=$this->method->http_request($task_domain."/sunyardEngine/getTasks?enterTaskNum=2");
+//if(!$ff){
+//	echo "<b style='color:red;'>远程服务器请求异常!</b>";
+//	exit;
+//}
+$ff='[{"result":"","OID":"1","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37317_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37318_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_9"},{"result":"","OID":"2","taskType":"1","image":["http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37319_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37320_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37321_1.JPG","http://localhost:88/imageWeb/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326/PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_37326_1.JPG"],"enterWay":"1","taskID":"PA_hppqqqpoq_003_F69343A34F3A4171AE044A0369F1934EC_7700047169113_900004_4_3_PA_152_10"},{"result":"18924671673","OID":"3","taskType":"2","image":["http://localhost:88/imageWeb/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228/PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_37228_1.JPG"],"enterWay":"0","taskID":"PA_hppqqphdh_003_F694955C0D7756B62E044A0369F1934EC_7700047169348_900004_6_5_PA_155_1"}]';
 $task_sign=$this->func->encrypt($ff,'E','lottery123');
 $obj = json_decode($ff);
 ?> 
@@ -139,15 +139,16 @@ $('#btn_submit').click(function(){
 	 var jsonString= JSON.stringify(json);
     $.post('<?php echo site_url("ajx/lottery/dosubmit")?>',{jsonString:jsonString,code:code,sign:sign},function(result){
           var msg=result.msg;      
-          if(result.code==2||result.code=="2"){
-              $("#btn_submit").hide();
-          }     
+   
           $("#message").html(msg);
           if(result.task_html){
  
               $(".mydiv").html(result.task_html);          
           }
-          
+          if(result.code==2||result.code=="2"){
+              console.log($("#btn_submit"));
+              $("#btn_submit").remove();
+          }            
        
     },'json');
 

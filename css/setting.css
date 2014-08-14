@@ -780,7 +780,8 @@
 	border-top: 0;
 	width: 710px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-	background:  #fcffff
+	background:  #fcffff;
+	margin-left:5px;
 }
 
 .layouta {
