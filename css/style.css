@@ -302,14 +302,18 @@ table.myprizes {
 table.myprizes td {
 	border-right: 1px solid #C1DAD7;
 	border-bottom: 1px solid #C1DAD7;
-	padding: 3px 3px 3px 6px;
 	color: #4f6b72;
 }
 
-table.myprizes td img {
+table.myprizes td.thumb {
+	background-color: #cae8ea;	
+	padding: 0;
+}
+	
+table.myprizes td.thumb img {
 	margin: 0 auto;	
-	width: 100%;
-	height: 70px;
+	/*width: 100%;
+	height: 70px;*/
 }
 
 table.myprizes tr:hover {

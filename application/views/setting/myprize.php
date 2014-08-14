@@ -49,7 +49,7 @@
 									?>
 									<?php $rate = $issueSum / $prize['num']; ?>
 									<tr>
-										<td><img src="<?php echo $prize['photo_url_s']; ?>" /></td>
+										<td class="thumb"><img src="<?php echo $prize['photo_url_s']; ?>" height="60" /></td>
 										<td><?php echo $prize['prizename']; ?></td>
 										<td>第<?php echo $issue_num; ?>期</td>
 										<td>
