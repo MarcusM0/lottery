@@ -139,15 +139,15 @@ $('#btn_submit').click(function(){
 	 var jsonString= JSON.stringify(json);
     $.post('<?php echo site_url("ajx/lottery/dosubmit")?>',{jsonString:jsonString,code:code,sign:sign},function(result){
           var msg=result.msg;      
-          if(result.code==2||result.code=="2"){
-              $("#btn_submit").hide();
-          }     
+
           $("#message").html(msg);
           if(result.task_html){
  
               $(".mydiv").html(result.task_html);          
           }
-          
+          if(result.code==2||result.code=="2"){
+              $("#btn_submit").hide();
+          }               
        
     },'json');
 
