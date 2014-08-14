@@ -1,0 +1,305 @@
+.W_f22 {
+	font-size: 22px;
+}
+
+.S_txt2 {
+	color: #808080;
+}
+
+.W_btn_b,.W_btn_e {
+	color: #333;
+}
+
+.W_input_error {
+	border-color: #e64141;
+}
+
+.W_btn_c span,.W_btn_b span {
+	min-width: 0;
+}
+
+
+.W_btn_big,.W_btn_big span,.btn_reg_a,.btn_reg_a span {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.W_btn_big,.btn_reg_a {
+	border: 1px solid #ff9b01;
+	border-radius: 2px;
+}
+
+.W_btn_big span,.btn_reg_a span {
+	border: 1px solid #ffb33b;
+	color: #FFF;
+	background: #FFA00A;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	font-style: normal;
+}
+
+.W_btn_big:hover,.btn_reg_a:hover {
+	text-decoration: none;
+	_zoom: 1;
+}
+
+.W_btn_big:hover span,.btn_reg_a:hover span {
+	text-decoration: none;
+	background: rgb(255, 184, 71);
+	background: -moz-linear-gradient(top, rgba(255, 184, 71, 1) 0%,
+		rgba(255, 162, 16, 1) 100% );
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,
+		184, 71, 1) ), color-stop(100%, rgba(255, 162, 16, 1) ) );
+	background: -webkit-linear-gradient(top, rgba(255, 184, 71, 1) 0%,
+		rgba(255, 162, 16, 1) 100% );
+	background: -o-linear-gradient(top, rgba(255, 184, 71, 1) 0%,
+		rgba(255, 162, 16, 1) 100% );
+	background: -ms-linear-gradient(top, rgba(255, 184, 71, 1) 0%,
+		rgba(255, 162, 16, 1) 100% );
+	background: linear-gradient(top bottom, rgba(255, 184, 71, 1) 0%,
+		rgba(255, 162, 16, 1) 100% );
+}
+
+.W_btn_big span {
+	width: 196px;
+	padding: 10px 0 8px;
+	height: 18px;
+	line-height: 18px;
+	font-size: 16px;
+}
+
+.btn_reg_a span {
+	height: 26px;
+	padding: 0 30px 0 28px;
+	line-height: 26px;
+	font-size: 14px;
+}
+
+.W_btn_big_dis,.W_btn_big_dis:hover {
+	background: #F2F2F2;
+	border-color: #D9D9D9;
+	cursor: default;
+}
+
+.W_btn_big_dis span,.W_btn_big_dis:hover span {
+	background: #F2F2F2;
+	border-color: #FFF;
+	color: #dadada;
+	cursor: default;
+}
+
+body {
+	background:#173D00;
+}
+
+.W_nologin_logo {
+	width: 130px;
+	height: 40px;
+	background: url("/images/logo2.png")
+		no-repeat;
+	_background: none;
+	_filter: progid : DXImageTransform.Microsoft.AlphaImageLoader ( enabled
+		= true, sizingMethod = crop, src =
+		'/images/logo2.png'
+		);
+}
+
+.W_nologin_logo a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+.W_reg_header {
+	width: 900px;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+.W_logo_wave,.W_logo_wave2 {
+	height: 164px;
+	background:
+		url("../../../images/register/bg_reg_wave.png?id=1370232467958")
+		no-repeat center bottom;
+	_background: none;
+}
+
+.W_logo_wave2 {
+	height: 128px;
+}
+
+
+.WB_global_nav {
+	position: static;
+	height: 41px;
+	background-image: none;
+	background-color: #333;
+	box-shadow: none;
+	overflow: hidden;
+}
+
+.WB_global_nav .gn_bg {
+	background-position: 0 39px;
+	border-bottom: 1px solid #daebf6;
+}
+
+.WB_global_nav .gn_header {
+	width: 900px;
+}
+
+.WB_global_nav .step_bg {
+	width: 130px;
+	padding: 0 9px 0 13px;
+	height: 39px;
+	overflow: hidden;
+	background-position: right -50px;
+	font-size: 16px;
+}
+
+.WB_global_nav .step_ico {
+	display: inline-block;
+	width: 25px;
+	height: 29px;
+	background-position: 1px -19px;
+	vertical-align: middle;
+	text-align: center;
+	color: #fff;
+	_float: left;
+	_margin-top: 6px;
+}
+
+.WB_global_nav .step2 {
+	background-position: 1px -131px;
+}
+
+.WB_global_nav .step_enter {
+	display: inline-block;
+	float: left;
+	width: 28px;
+	height: 40px;
+	background-position: 0 -89px;
+}
+
+.WB_global_nav .step_bg .step {
+	margin-left: 6px;
+	line-height: 40px;
+}
+
+.WB_global_nav .step_bg * {
+	font-style: italic;
+	color: #999;
+}
+
+.WB_global_nav .gn_nav {
+	padding-left: 78px;
+}
+
+.WB_global_nav .gn_nav .cur *,.WB_global_nav .gn_nav .step_item:hover *
+	{
+	color: #fff;
+}
+
+.WB_global_nav .gn_nav .step_item:hover {
+	text-decoration: none;
+}
+
+.WB_global_nav .gn_welcome {
+	float: left;
+	max-width: 150px;
+	_width: 150px;
+	padding: 0 10px;
+	color: #808080;
+	line-height: 37px;
+	text-align: right;
+}
+
+.WB_global_nav .gn_welcome .W_vline {
+	margin: 0 10px;
+}
+
+.WB_global_nav .gn_pic {
+	float: left;
+}
+
+.WB_global_nav .gn_pic img {
+	margin-top: 5px;
+	width: 30px;
+	height: 30px;
+}
+
+.W_reg_info_left {
+	float: left;
+	width: 630px;
+}
+
+.W_reg_info_right {
+	float: left;
+	width: 265px;
+	margin: 9px 0 0 3px;
+	padding-bottom: 73px;
+	overflow: hidden;
+}
+
+.W_nologin_main {
+	width: 900px;
+	margin: 0 auto 35px;
+	border-radius: 6px;
+	background-color: #fff;
+	box-shadow: 0px 2px 3px #98b4c4;
+	-moz-box-shadow: 0px 2px 3px #98b4c4;
+	-webkit-box-shadow: 0px 2px 3px #98b4c4;
+}
+
+.W_nologin .main_radius_bg {
+	width: 900px;
+	margin: 0 auto 15px;
+	background-color: #fff;
+	border-radius: 6px;
+	box-shadow: 0px 2px 3px #98b4c4;
+	-moz-box-shadow: 0px 2px 3px #98b4c4;
+	-webkit-box-shadow: 0px 2px 3px #98b4c4;
+}
+
+.W_nologin .main_e_radius_bg {
+	background: #fff;
+	border-radius: 6px;
+	box-shadow: none;
+}
+
+.W_nologin .main_radius_ebg {
+	background: #fff;
+	border-radius: 0 0 6px 6px;
+	margin: 0 auto 15px;
+}
+
+.W_reg_con {
+	min-height: 500px;
+	_height: 500px;
+}
+
+.W_nologin .footer_nologin select {
+	margin-top: 0;
+}
+
+.W_nologin .main_single_bg {
+	margin: 0 auto 15px;
+}
+
+#js_homestyle_css_module_register_nologin_frame {
+	height: 42px;
+}
+
+#js_style_css_module_register_nologin_frame {
+	height: 42px;
+}
+
+
+.W_login_form .info_list .W_btn_g span {
+	min-width: 49px;
+	_width: 49px;
+}
+

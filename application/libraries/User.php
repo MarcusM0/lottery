@@ -2,8 +2,11 @@
 
 
 class CI_user {
+	
 	public function __construct($params = array()){
+		
 		$this->CI =& get_instance();
+
 	}
 	
 	public function isAccountExist($email){
@@ -19,7 +22,7 @@ class CI_user {
 			return $result;
 	}		
 	
-	public function doLogin($email,$password){
+	public function doLogin($email,$password,$remember){
 			$rs=$this->CI->db->query("select *  from login where  password='".$password."' and account='".$email."'");
 			$accounts=$rs->result_array();	
 			$result=array();	
@@ -28,11 +31,28 @@ class CI_user {
 				$uid=$account['userid'];
 				$user=$this->getUserById($uid);
 				$this->CI->cache->set_user($user);
+				if($remember=="1"){
+					$rd=$this->CI->func->getRdCard();
+					set_cookie("autoLogin",$rd,86500*30);
+			    	$this->CI->user->updateRd($uid,$rd);
+				}		    	
+	    					
+				
 				return true;
 			}else{
 				return false;			
 			}		
 
+	}	
+	
+	function updateRd($uid,$rd){
+		$data = array(
+		'rd'=>$rd
+		);
+		$where = array(
+		'id'=>$uid,
+		);
+		$this->CI->db->update('user',$data,$where); 	
 	}	
 	
 	
@@ -78,6 +98,19 @@ class CI_user {
         return  $object;
 	}	
 	
+	function getUserByRd($rd){
+		$object=null;
+		$sql= "SELECT * FROM user where status=1 and rd='".$rd."'";
+		$rs = $this->CI->db->query ( $sql);
+		$list = $rs->result_array ();
+		if(isset($list)&&$list){
+			$object=$list[0];
+			$this->CI->cache->set_user($object);	
+		}
+        return  $object;
+	}		
+	
+	
 	
 	function updateInfo($userinfo,$uid){
 		$where = array(
@@ -117,6 +150,21 @@ class CI_user {
         }
         return  $u;
 	}		
+	
+	function updatePasswordByEmail($user){
+		$data = array(
+		'password'=>md5($user['password']),
+		);
+		$where = array('email'=>$user['email']);
+		$where_login = array('account'=>$user['email']);
+		var_dump($user);		
+		$this->CI->db->trans_start();
+		$this->CI->db->update('user',$data,$where); 
+		$this->CI->db->update('login',$data,$where_login); 		
+		$this->CI->db->trans_complete();
+        return  $u;
+	}		
+	
 
 }
 

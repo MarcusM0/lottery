@@ -19,7 +19,7 @@
 <?php $this->load->view('include/top',array()); ?>	
 
 
-<div class="center" style="height:600px;padding-top:80px;background:#fff">
+<div class="center" style="padding-top:80px;background:#fff">
 <div class="wrap">
 <div class="wrap_bg">
 <div class="frame_content">

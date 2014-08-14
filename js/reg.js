@@ -1,4 +1,10 @@
 $().ready(function() {
+	jQuery.validator.addMethod("isMobile", function(value, element) {  
+	    var length = value.length;  
+	    var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;  
+	    return this.optional(element) || (length == 11 && mobile.test(value));  
+	}, "");  	
+	
 	$("#formReg").validate({
 		submitHandler: function() {
 		  $("#emailts").hide();
@@ -36,6 +42,10 @@ $().ready(function() {
 				　　 }	       
 	           }
 	        },
+		    mobile: { 
+				required: true,
+				isMobile : true			
+	        },     
 			password: "required"
 
 		},
@@ -53,6 +63,10 @@ $().ready(function() {
 			    remote: "邮箱已存在!"
 			    
     	    },
+			mobile: {
+				required: "手机号码不能为空",
+				isMobile: "请正确填写您的手机号码"		
+    	    },      
 			password: "密码不能为空!"
 		}
 	});

@@ -150,10 +150,10 @@ class CI_prize {
 			   $total=intval($list[0]['num']);
 		    }	    		 
 		    if($num<$total){
-		    	$num=$num+1;
-		    	$this->CI->db->trans_start();   	
-        	    $sql= "update prize set num_now= ".$num." where id=".$id;
- 		        $rs = $this->CI->db->query ( $sql);  		    	
+		    	$num_new=$num+1;
+		    	$this->CI->db->trans_start();   			    	
+        	    $sql= "update prize set num_now= ".$num_new." where id=".$id;
+ 		        $rs = $this->CI->db->query ( $sql);  		 		            	
  		        $currentIssue = $this->getCurrentLotteryIssueOfPrize($id, true);
 	            $this->CI->db->insert("user_lottery_action", array(
 	            	'id_user' => $user['id'],
@@ -167,7 +167,7 @@ class CI_prize {
 	            }
 	            $this->CI->db->trans_complete(); 	
 	            $result['code']=1;	    
-	            $result['msg']="恭喜您又获得1张奖券,号码为:".$num;    
+	            $result['msg']="恭喜您又获得1张奖券,号码为:".str_pad($num,8,'0',STR_PAD_LEFT); 
 			    $result['num']=$num;
 			    $result['total']=$total;
 	            
