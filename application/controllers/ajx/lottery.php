@@ -42,6 +42,8 @@ class lottery extends CI_Controller {
 	                	if($item->taskID==$o->taskID){
 	                		if($item->result==$o->result){
 	                				$rs=true;
+	                		}else{
+	                			    $rs=false;
 	                		}
 	                	}
 	                }          	  	
