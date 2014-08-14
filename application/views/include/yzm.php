@@ -3,9 +3,9 @@ error_reporting(0);
 ?>
 <input type="hidden" id="code" value="<?php echo $id?>"/>
 <div class="yzn">
-<div class="close" onclick="document.getElementById('closen').style.display=(document.getElementById('closen').style.display=='none')?'':'none';document.location.reload();" ><img src="images/close.png" /></div>
+<div class="close" onclick="document.getElementById('closen').style.display=(document.getElementById('closen').style.display=='none')?'':'none';document.location.reload();" ><img src="/images/close.png" /></div>
 <ul>
-    <li class="yzn1"><img src="images/yzm.png" /></li>
+    <li class="yzn1"><img src="/images/yzm.png" /></li>
    <?php 
 $task_domain=$this->config->item('task_domain');
 //$ff=$this->method->http_request($task_domain."/sunyardEngine/getTasks?enterTaskNum=2");
@@ -37,11 +37,11 @@ if(isset($obj)&&$obj){
        foreach ($images as $image) {  
        	      if($item->enterWay==0){	
       ?>   
-      <img style="margin-left:5px;float:left;" class="reimg" src=<?php echo $image?> /> 	
+      <img style="margin-left:5px;float:left;" class="reimg" src="<?php echo $image?>" /> 	
    <?php
        	      }else{
       ?>   	
-     <div style="margin-left:3px;float:left;text-align:center;width:60px;"> <img style="float:left;width:60px;height:60px;" class="reimg" src=<?php echo $image?> /> 	</div>      	
+     <div style="margin-left:3px;float:left;text-align:center;width:60px;"> <img style="float:left;width:60px;height:60px;" class="reimg" src="<?php echo $image?>" /> 	</div>      	
       <?php   	      	
        	      }
        }
@@ -70,7 +70,7 @@ if(isset($obj)&&$obj){
 	}
 }
 ?>    
-    <li class="lq"><a href="javascript:void(0)" id="btn_submit" ><img src="images/lq.png"/></a></li>
+    <li class="lq"><a href="javascript:void(0)" id="btn_submit" ><img src="/images/lq.png"/></a></li>
 </ul>
 <div id="message" class="houj" style="display:block;font-weight:bold" >
 <?php echo (isset($msg)&&$msg)? $msg:'';?>
