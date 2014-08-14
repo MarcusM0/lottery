@@ -1,10 +1,12 @@
 $().ready(function() {
 	$("#formLogin").validate({
 		submitHandler: function(e) {
+//		   document.getElementById("formLogin").submit();		   
 		   $("#msg").html("");
            var url=$("#formLogin").attr("url");
            var email=$("#email").val();
            var password=$("#password").val();
+
            var remember=0;
            if($("#remember").attr("checked")=="checked"){
         	   remember=1;
