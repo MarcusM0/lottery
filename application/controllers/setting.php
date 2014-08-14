@@ -29,13 +29,23 @@ class setting extends CI_Controller {
 	
 	public function myprize() {
 		$user=$this->cache->get_user();
-		$myPrizeNoList = $this->prize->getPrizeNoList(' created_time DESC ', null, array(
+		$myPrizeNoList = $this->prize->getPrizeNoList(' created_time DESC ', array(
 			'userid' => $user['id']
-		), true);
+		));
+		
+		$currPage = $this->getQuery('page', 1);
+		$pageSize = 10;
+		$recordSum = count($myPrizeNoList);
+		$sliceStart = $currPage*$pageSize - $pageSize;
+		$myPrizeNoList = array_slice($myPrizeNoList, $sliceStart, $pageSize);
 		
 		$this->load->view ('setting/myprize', array(
 			'user' => $user,
-			'myPrizeNoList' => $myPrizeNoList
+			'myPrizeNoList' => $myPrizeNoList,
+		
+			'pageSize' => $pageSize,
+			'currPage' => $currPage,
+			'recordSum' => $recordSum
 		));
 	}
 	
@@ -67,6 +77,23 @@ class setting extends CI_Controller {
         //header("Location:".site_url('setting/pwd'));
         echo true;
 	}	
+	
+	
+	
+	public function getParam($name,$defaultValue=null)
+	{
+		return isset($_GET[$name]) ? $_GET[$name] : (isset($_POST[$name]) ? $_POST[$name] : $defaultValue);
+	}
+
+	public function getQuery($name,$defaultValue=null)
+	{
+		return isset($_GET[$name]) ? $_GET[$name] : $defaultValue;
+	}
+
+	public function getPost($name,$defaultValue=null)
+	{
+		return isset($_POST[$name]) ? $_POST[$name] : $defaultValue;
+	}
 	
 }
 
