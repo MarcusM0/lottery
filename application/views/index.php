@@ -36,7 +36,7 @@ $user=$this->cache->get_user();
  <div class="haon">
  <div class="haonl"><img src="images/luckNumber.png" /></div>
  <div class="haonc">
- <span>95331690</span>
+ 	<span id="lottery_num">95331690</span>
  </div>
  <div class="haonr">
  <ul>
@@ -279,5 +279,23 @@ $(".btn_cj").bind("click",function(){
 	    //$("span").html(result);
 	  });
 
+});
+
+
+setInterval(function(){
+	fetchLotteryNum();
+}, 3000);
+function fetchLotteryNum()
+{
+	$.ajax({
+		url: '<?php echo site_url('generate_lottery_num'); ?>',
+		type: 'get',
+		success: function(ret){
+			if(ret.result){
+				$('#lottery_num').text(ret.lottery_num);
+			}
+		},
+		dataType: 'json' 
 	});
+}
 </script>
