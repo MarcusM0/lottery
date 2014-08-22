@@ -53,7 +53,7 @@
 										<td><?php echo $prize['prizename']; ?></td>
 										<td>第<?php echo $issue_num; ?>期</td>
 										<td>
-											<?php echo $issueSum; ?>张(<?php echo $rate*1000; ?>‰)
+											<?php echo $issueSum; ?>张(<?php echo str_replace('.00', '', number_format($rate*1000, 2)); ?>‰)
 										</td>
 										<td>
 											<?php if($issue['issue_result'] == CI_prize::ISSUE_PENDING): ?>
