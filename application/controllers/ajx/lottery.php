@@ -58,18 +58,21 @@ class lottery extends CI_Controller {
 		           }        
 		           $jsonString = json_encode($obj);    	
            	  	   $result=$this->prize->getPrizeNo($prizecode);
-           	  	   if($result['code']==1){
+           	  	   if($result['code']==1||$result['code']==2){
            	  	    	$this->prize->taskSubmit($jsonString);    
            	  	   }
             	   $msg=$result['msg'];
             	   $code=$result['code'];
-                   $task_html = $this->load->view('include/yzm',array("id"=>$prizecode,"msg"=>$msg),true);   
+            	   if($result['code']==1){
+                      $task_html = $this->load->view('include/yzm',array("id"=>$prizecode,"msg"=>$msg),true);   
+            	   }else{
+            	      $task_html="";
+            	   }
             }           
-       
            $return['v']=$rs;
            $return['msg']=$msg;
            $return['code']=$code;
-           $return['task_html']=$task_html;
+           $return['task_html']=$task_html;         
            $return['task_title']=$task_title;
 		   $placehtml = json_encode ( $return);	 
 		   echo   $placehtml;           

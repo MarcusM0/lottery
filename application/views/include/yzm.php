@@ -35,19 +35,20 @@ if(isset($obj)&&$obj){
     <?php 
        $images=$item->image;
        foreach ($images as $image) {  
+      	      $image_size   =   getimagesize($image);   
+      	      $margin= $image_size[1]-12; 	
        	      if($item->enterWay==0){	
       ?>   
       <img style="margin-left:5px;float:left;" class="reimg" src="<?php echo $image?>" /> 	
    <?php
        	      }else{
       ?>   	
-     <div style="margin-left:3px;float:left;text-align:center;width:60px;"> <img style="float:left;width:60px;height:60px;" class="reimg" src="<?php echo $image?>" /> 	</div>      	
+     <div style="margin-left:3px;float:left;text-align:center;width:<?php echo $image_size[0].'px'?>"> <img style="float:left;width:<?php echo $image_size[0].'px'?>" class="reimg" src="<?php echo $image?>" /> 	</div>      	
       <?php   	      	
        	      }
        }
-    ?>
-      
-       <a style="margin-left:5px;float:left;margin-top:40px;" class="refresh_btn" href="javascript:void(0)" > 	刷新</a>
+    ?>      
+       <a style="margin-left:5px;float:left;margin-top:<?php echo $margin.'px'?>" class="refresh_btn" href="javascript:void(0)" > 	刷新</a>
     </li>    
     <li class="yzn3">
     <?php 
@@ -58,7 +59,7 @@ if(isset($obj)&&$obj){
       }else{
       	foreach ($images as $check) {
     ?>
-  <div style="margin-left:3px;float:left;text-align:center;width:60px;"><input name="box" type="checkbox" id="result" style="width:30px;" /> </div>       		
+  <div style="margin-left:3px;float:left;text-align:center;width:<?php echo $image_size[0].'px'?>"><input name="box" type="checkbox" id="result" style="width:30px;" /> </div>       		
   <?php  
       	}      	
       }
@@ -139,10 +140,8 @@ $('#btn_submit').click(function(){
 	 var jsonString= JSON.stringify(json);
     $.post('<?php echo site_url("ajx/lottery/dosubmit")?>',{jsonString:jsonString,code:code,sign:sign},function(result){
           var msg=result.msg;      
-
           $("#message").html(msg);
-          if(result.task_html){
- 
+          if(result.task_html){ 
               $(".mydiv").html(result.task_html);          
           }
           if(result.code==2||result.code=="2"){

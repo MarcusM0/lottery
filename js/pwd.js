@@ -9,7 +9,11 @@ $().ready(function() {
 		submitHandler: function() {
 		   var email=$("#email").val();
 		  $.post("/pwd/send",{email:email},function(result){
-                   $("#msg").html("密码已发送到邮箱!");
+			     if(result==true||result=="true"){
+			    	 $("#msg").html("密码已发送到邮箱!");
+			     }else{
+			    	 $("#msg").html("密码发送失败!");
+			     }                   
 			  });
 
 		},		

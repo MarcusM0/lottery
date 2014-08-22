@@ -36,9 +36,10 @@ class CI_email {
 	    //$mail->AddAttachment("images/phpmailer.gif");      // attachment 
 	    //$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
 	    if(!$mail->Send()) {
+	    	return false;
 	        //echo "Mailer Error: " . $mail->ErrorInfo;
 	    } else {
-
+            return true;
 	    }    	
     	
 
