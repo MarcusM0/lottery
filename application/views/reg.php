@@ -44,7 +44,7 @@
     </li>
 
     <li class="submit loginfont">
-    <a style="float:left;color:black" href="<?php echo site_url("agree")?>" target="_blank">使用协议</a>   <a style="float:right;padding-right:20px;;color:black" href="<?php echo site_url("login")?>">已有账号?登录</a>
+    <a style="float:left;color:black" href="<?php echo site_url("agree")?>" target="_blank">使用协议</a><span id="regmsg" style="padding-left:60px;color:red;display:none">激活邮件已发送!</span>   <a style="float:right;padding-right:20px;;color:black" href="<?php echo site_url("login")?>">已有账号?登录</a>
     <input type="submit" id="submit" value="立即注册">
 
     <input type="button" style="margin-top:10px;" id="submit" onclick="location.href='<?php echo site_url()?>'" value="返回">        

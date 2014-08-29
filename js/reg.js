@@ -11,8 +11,9 @@ $().ready(function() {
 		  var email=$("#email").val();
 		  var password=$("#password").val();
 		  var nick_name=$("#nick_name").val();
+		  $("#regmsg").hide();
 		  $.post("/reg/doreg",{email:email,password:password,nick_name:nick_name},function(result){
-           $("#emailts").show();
+           $("#regmsg").show();
 		   });
 		},		
 		rules: {
