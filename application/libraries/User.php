@@ -20,7 +20,19 @@ class CI_user {
 
 			}		
 			return $result;
-	}		
+	}	
+
+	public function isEmailExist($email){
+			$rs=$this->CI->db->query("select *  from login where category='email' and account='".$email."'");
+			$accounts=$rs->result_array();	
+			$result=array();	
+			if(isset($accounts)&&$accounts){
+                  return true;
+
+			}		
+			return false;
+	}	
+	
 	
 	public function doLogin($email,$password,$remember){
 			$rs=$this->CI->db->query("select *  from login where  password='".$password."' and account='".$email."'");
@@ -155,7 +167,6 @@ class CI_user {
 		);
 		$where = array('email'=>$user['email']);
 		$where_login = array('account'=>$user['email']);
-		var_dump($user);		
 		$this->CI->db->trans_start();
 		$this->CI->db->update('user',$data,$where); 
 		$this->CI->db->update('login',$data,$where_login); 		

@@ -8,7 +8,12 @@ $().ready(function() {
 	$("#formPwd").validate({
 		submitHandler: function() {
 		   var email=$("#email").val();
+		   $("#msg").html("");
 		  $.post("/pwd/send",{email:email},function(result){
+			     if(result=="0"){
+			    	 $("#msg").html("邮箱未注册!");
+			    	 return false;
+			     }
 			     if(result==true||result=="true"){
 			    	 $("#msg").html("密码已发送到邮箱!");
 			     }else{

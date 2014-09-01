@@ -7,8 +7,9 @@ error_reporting(0);
 <ul>
     <li class="yzn1"><img src="/images/yzm.png" /></li>
    <?php 
+$user=$this->cache->get_user();   
 $task_domain=$this->config->item('task_domain');
-$ff=$this->method->http_request($task_domain."/sunyardEngine/getTasks?enterTaskNum=2");
+$ff=$this->method->http_request($task_domain."/sunyardEngine/getTasks?enterTaskNum=2"."&uid=".$user['id']);
 if(!$ff){
 	echo "<b style='color:red;'>远程服务器请求异常!</b>";
 	exit;
@@ -35,20 +36,18 @@ if(isset($obj)&&$obj){
     <?php 
        $images=$item->image;
        foreach ($images as $image) {  
-      	      $image_size   =   getimagesize($image);   
-      	      $margin= $image_size[1]-12; 	
        	      if($item->enterWay==0){	
       ?>   
-      <img style="margin-left:5px;float:left;" class="reimg" src="<?php echo $image?>" /> 	
+      <img style="margin-left:5px;float:left;height:60px;" class="reimg" src="<?php echo $image?>" /> 	
    <?php
        	      }else{
       ?>   	
-     <div style="margin-left:3px;float:left;text-align:center;width:<?php echo $image_size[0].'px'?>"> <img style="float:left;width:<?php echo $image_size[0].'px'?>" class="reimg" src="<?php echo $image?>" /> 	</div>      	
+     <div style="margin-left:3px;float:left;text-align:center;width:60px;"> <img style="float:left;width:60px;" class="reimg" src="<?php echo $image?>" /> 	</div>      	
       <?php   	      	
        	      }
        }
     ?>      
-       <a style="margin-left:5px;float:left;margin-top:<?php echo $margin.'px'?>" class="refresh_btn" href="javascript:void(0)" > 	刷新</a>
+       <a style="margin-left:5px;float:left;margin-top:20px;" class="refresh_btn" href="javascript:void(0)" > 	刷新</a>
     </li>    
     <li class="yzn3">
     <?php 
@@ -59,7 +58,7 @@ if(isset($obj)&&$obj){
       }else{
       	foreach ($images as $check) {
     ?>
-  <div style="margin-left:3px;float:left;text-align:center;width:<?php echo $image_size[0].'px'?>"><input name="box" type="checkbox" id="result" style="width:30px;" /> </div>       		
+  <div style="margin-left:3px;float:left;text-align:center;width:60px"><input name="box" type="checkbox" id="result" style="width:30px;" /> </div>       		
   <?php  
       	}      	
       }
